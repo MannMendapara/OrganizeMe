@@ -1,0 +1,22 @@
+.sidebar {
+  background: var(--dark-bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 300px;
+  gap: 20px;
+  padding: 70px 50px 0px 50px;
+  text-align: justify;
+  flex-wrap: wrap;
+}
+
+.dashboard, .all-task, .cmplt-task, .add-task {
+  margin: 20px 0px 20px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar img {
+  padding-right: 10px;
+}/*# sourceMappingURL=Sidebar.css.map */
