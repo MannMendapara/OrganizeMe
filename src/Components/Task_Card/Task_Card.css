@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  justify-content: flex-start;
+  width: 262px;
+  background-color: var(--dark-bg);
+  padding: 0.7rem;
+  border-radius: 7px;
+}
+
+.des {
+  margin-bottom: 8px;
+  color: var(--bg);
+}
+
+.data {
+  width: 90%;
+}
+
+.card-icons {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+}/*# sourceMappingURL=Task_Card.css.map */
