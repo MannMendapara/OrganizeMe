@@ -1,0 +1,68 @@
+.model {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--light-bg);
+  filter: blur(5px);
+}
+
+.cont {
+  position: relative;
+  z-index: 1;
+  height: 685px;
+  width: 852px;
+  background: var(--bg);
+  padding: 3rem 3rem 3rem 5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input-field {
+  margin-right: 3rem;
+}
+
+.input-field label {
+    color: var(--dark-bg);
+}
+
+.input-field input,
+.input-field select {
+  width: 243px;
+  height: 41px;
+  margin-top: 7px;
+  border-radius: 6px;
+  border: 3px solid #006d77;
+  background: rgba(0, 109, 119, 0);
+  font-size: 14px;
+  padding: 0 10px 0 10px;
+}
+
+.Task-desc {
+  width: 536px;
+  height: 128px;
+  margin-top: 7px;
+  resize: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 3px solid #006d77;
+  background: rgba(0, 109, 119, 0);
+}
+
+.Text-Area label {
+    color: var(--dark-bg);
+}
