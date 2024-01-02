@@ -6,11 +6,11 @@ const Navbar = () => {
     <nav className='nav'>
       <div className='container'>
         <div className='ham-btn'>
-          <img src="./public/Images/Hambar.png" alt="" />
+          <img src="./public/Images/Hambar.png" alt="Icon" />
         </div>
         <div className='search-bar'>
           <input type="text" placeholder='Search'/>
-          <img src="./public/Images/Search.png" alt="" />
+          <img src="./public/Images/Search.png" alt="Icon" />
         </div>
         <div className='links'>
           <ul>
