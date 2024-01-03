@@ -4,7 +4,7 @@ import './Edit_Task.css'
 const Edit_Task = () => {
     return (
         <div className='model'>
-            <div className="cont">
+            <div className='cont'>
                 <div className="input-field">
                     <label htmlFor="Task-Title">Task-Title</label>
                     <br />
@@ -40,8 +40,15 @@ const Edit_Task = () => {
                     <br />
                     <textarea name="" id="Task-desc" cols="30" rows="10" placeholder='Write here' className='Task-desc'></textarea>
                 </div>
+                <div className='confirm-btn-cnt'>
+                    <button className='confirm-btn'>Confirm Edit</button>
+                </div>
+                <div className='markasdone-delete-btn-cnt'>
+                    <button className='markasdone-btn'>Mark as Done</button>
+                    <button className='delete-btn'>Delete</button>
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 

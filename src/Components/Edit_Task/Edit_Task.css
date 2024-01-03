@@ -65,4 +65,44 @@
 
 .Text-Area label {
   color: var(--dark-bg);
+}
+
+.Text-Area {
+  width: 100%;
+}
+
+.confirm-btn-cnt {
+  width: 100%;
+}
+
+.confirm-btn {
+  width: 243px;
+  height: 41px;
+  border-radius: 6px;
+  border: 3px solid var(--dark-bg);
+  background: var(--dark-bg);
+  color: var(--bg);
+  font-size: 1rem;
+}
+
+.markasdone-btn {
+  width: 184px;
+  height: 41px;
+  border-radius: 6px;
+  border: 3px solid var(--dark-bg);
+  background: var(--dark-bg);
+  color: var(--bg);
+  font-size: 1rem;
+}
+
+.delete-btn {
+  width: 184px;
+  height: 41px;
+  border-radius: 6px;
+  border: 3px solid #006D77;
+  background: rgba(0, 109, 119, 0);
+  font-size: 1rem;
+  color: var(--dark-bg);
+  font-weight: 520;
+  margin-left: 3rem;
 }/*# sourceMappingURL=Edit_Task.css.map */
