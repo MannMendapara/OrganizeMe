@@ -5,7 +5,7 @@ import Task_Card from './Components/Task_Card/Task_Card'
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Task_Card /> */}
     </>
   )
