@@ -1,0 +1,99 @@
+.Create-task-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+.cont {
+  position: relative;
+  z-index: 1;
+  height: 685px;
+  width: 852px;
+  background: var(--bg);
+  padding: 3rem 3rem 3rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  width: 569px;
+  height: 117px;
+  border-radius: 4px;
+  background: #83C5BE;
+}
+
+.title p {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.input-field {
+  margin-right: 3rem;
+}
+
+.input-field label {
+  color: var(--dark-bg);
+}
+
+.input-field input,
+.input-field select {
+  width: 243px;
+  height: 41px;
+  margin-top: 7px;
+  border-radius: 6px;
+  border: 3px solid #006d77;
+  background: rgba(0, 109, 119, 0);
+  font-size: 14px;
+  padding: 0 10px 0 10px;
+}
+
+.Task-desc {
+  width: 536px;
+  height: 128px;
+  margin-top: 7px;
+  resize: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 3px solid #006d77;
+  background: rgba(0, 109, 119, 0);
+}
+
+.Text-Area label {
+  color: var(--dark-bg);
+}
+
+.Text-Area {
+  width: 80%;
+}
+
+.confirm-btn-cnt {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-btn {
+  width: 243px;
+  height: 41px;
+  border-radius: 6px;
+  border: 3px solid var(--dark-bg);
+  background: var(--dark-bg);
+  color: var(--bg);
+  font-size: 1rem;
+  cursor: pointer;
+}/*# sourceMappingURL=Create_Task.css.map */
