@@ -1,0 +1,49 @@
+.home-cnt {
+  margin-top: 71px;
+  padding-top: 1rem;
+  display: flex;
+}
+
+.running-task-cnt {
+  width: 50%;
+  position: relative;
+  padding: 2rem 2rem 2rem 3rem;
+}
+
+.running-task-cnt::before {
+  content: "";
+  background: var(--dark-bg);
+  height: calc(100% - 8rem);
+  position: absolute;
+  right: 0;
+  top: 3rem;
+  width: 2px;
+  border-radius: 5px;
+}
+
+.completed-task-cnt {
+  width: 50%;
+  padding: 2rem 2rem 2rem 3rem;
+}
+
+.main-title {
+  width: 189px;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+}
+
+.main-title p {
+  color: var(--dark-bg);
+  width: 100%;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.datacard-cnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}/*# sourceMappingURL=Home.css.map */
