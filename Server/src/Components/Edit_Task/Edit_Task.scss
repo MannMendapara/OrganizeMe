@@ -1,0 +1,108 @@
+.model {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .model::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(131, 197, 190, 0.4);
+    filter: blur(4px)
+  }
+  
+  .cont {
+    position: relative;
+    z-index: 1;
+    height: 685px;
+    width: 852px;
+    background: var(--bg);
+    padding: 3rem 3rem 3rem 5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .input-field {
+    margin-right: 3rem;
+  }
+  
+  .input-field label {
+      color: var(--dark-bg);
+  }
+  
+  .input-field input,
+  .input-field select {
+    width: 243px;
+    height: 41px;
+    margin-top: 7px;
+    border-radius: 6px;
+    border: 3px solid #006d77;
+    background: rgba(0, 109, 119, 0);
+    font-size: 14px;
+    padding: 0 10px 0 10px;
+  }
+  
+  .Task-desc {
+    width: 536px;
+    height: 128px;
+    margin-top: 7px;
+    resize: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 3px solid #006d77;
+    background: rgba(0, 109, 119, 0);
+  }
+  
+  .Text-Area label {
+      color: var(--dark-bg);
+  }
+
+  .Text-Area {
+    width: 100%;
+  }
+  
+  .confirm-btn-cnt {
+    width: 100%;
+  }
+
+  .confirm-btn {
+    width: 243px;
+    height: 41px;
+    border-radius: 6px;
+    border: 3px solid var(--dark-bg);
+    background: var(--dark-bg);
+    color: var(--bg);
+    font-size: 1rem;
+  }
+
+  .markasdone-btn {
+    width: 184px;
+    height: 41px;
+    border-radius: 6px;
+    border: 3px solid var(--dark-bg);
+    background: var(--dark-bg);
+    color: var(--bg);
+    font-size: 1rem;
+  }
+
+  .delete-btn {
+    width: 184px;
+    height: 41px;
+    border-radius: 6px;
+    border: 3px solid #006D77;
+    background: rgba(0, 109, 119, 0.00);
+    font-size: 1rem;
+    color: var(--dark-bg);
+    font-weight: 520;
+    margin-left: 3rem;
+  }
