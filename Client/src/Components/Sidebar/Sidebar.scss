@@ -3,14 +3,14 @@
     color: var(--text);
     display: flex;
     flex-direction: column;
-   width: 195px;
-   height: calc(100% - 70px);
-   padding: 50px 0px 110px 20px;
-   border-radius: 2px;
+    width: 195px;
+    height: 100%;
+    padding: 50px 0px 110px 20px;
+    border-radius: 2px;
    border: 1px solid #000;
    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
    z-index: 1;
-   position: absolute;
+   position: fixed;
    top: 70px;
    left: 0;
 }

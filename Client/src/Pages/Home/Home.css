@@ -46,4 +46,52 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.btn-cnt {
+  border-radius: 3px;
+  border: 2px solid var(--dark-bg);
+  background: rgba(0, 109, 119, 0);
+  padding: 5px 7px;
+  float: right;
+  margin-right: 3rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  color: var(--dark-bg);
+  background: var(--bg);
+  border: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.add-task-btn-cnt {
+  height: 40px;
+  width: 100%;
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3rem;
+  margin-top: 1.3rem;
+}
+
+.add-task-btn {
+  height: 100%;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 2rem;
+  border: none;
+  background: var(--dark-bg);
+  color: var(--text);
+}
+
+.add-task-btn:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=Home.css.map */
