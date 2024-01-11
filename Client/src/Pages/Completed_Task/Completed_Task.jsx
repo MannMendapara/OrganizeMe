@@ -23,6 +23,11 @@ const Completed_Task = () => {
 
   return (
     <div className='completed-cnt'>
+           <div className="top-cont">
+        <div className="top-title">
+          <p>Completed Task</p>
+        </div>
+        </div>
       <div className='datacard-cnt'>
         {
           completed.map((item, i) => {
