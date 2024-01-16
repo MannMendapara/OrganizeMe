@@ -18,7 +18,7 @@ const Home = () => {
   const handleAllCompleted = () => {
     Navigate('/completed')
   }
-
+ 
   const handleAddTask = () => {
     Navigate('/add-task')
   }
