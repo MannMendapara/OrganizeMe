@@ -1,65 +1,99 @@
-import React from "react";
+import { useState } from "react";
 import "./Create_Task.css";
+import axios from 'axios'
 
 const Create_Task = () => {
+  // State
+  const [taskTitle, setTaskTitle] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [priority, setPriority] = useState('');
+  const [category, setCategory] = useState('');
+  const [taskDesc, setTaskDesc] = useState('');
+
+  //Functions
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Validate the form fields (you may add more validation logic)
+    if (!taskTitle || !endDate || !priority || !category) {
+      console.error("Please fill in all required fields.");
+      return;
+    }
+
+    console.log(taskTitle,endDate,priority,category,taskDesc);
+
+    try {
+      // Send the form data to the server
+      const response = await axios.post('http://localhost:3000/add', {
+        Title: taskTitle,
+        EndDate: endDate,
+        Priority: priority,
+        Category: category,
+        TaskDesc: taskDesc,
+      });
+      console.log(response.data);
+      // Clear the form fields after successful submission (you may adjust this based on your needs)
+      setTaskTitle('');
+      setEndDate('');
+      setPriority('');
+      setCategory('');
+      setTaskDesc('');
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
+  };
+
   return (
     <div className="Create-task-container">
-      <div className="cont">
+      <form className="cont" onSubmit={handleSubmit}>
         <div className="title">
           <p>Create Your Task</p>
         </div>
         <div className="input-field">
           <label htmlFor="Task-Title">Task-Title</label>
           <br />
-          <input type="text" id="Task-Title" placeholder="Task-Title" />
+          <input type="text" id="Task-Title" placeholder="Task-Title" name="Title" value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)}/>
         </div>
         <div className="input-field">
           <label htmlFor="End-date">End-Date</label>
           <br />
-          <input type="date" id="End-date" placeholder="End-Date" />
+          <input type="date" name="EndDate" id="End-date" placeholder="End-Date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
         </div>
         <div className="input-field">
           <label htmlFor="Priority">Priority</label>
           <br />
-          <select type="text" id="Priority">
-            <option value="" disabled selected>
-              Choose Priority
-            </option>
-            <option value="">Very Important</option>
-            <option value="">Important</option>
-            <option value="">Less Important</option>
+          <select type="text" name="Priority" id="Priority" onChange={(e) => setPriority(e.target.value)}>
+            <option value="Very Important">Very Important</option>
+            <option value="Important">Important</option>
+            <option value="Less Important">Less Important</option>
           </select>
         </div>
-
         <div className="input-field">
           <label htmlFor="Category">Category</label>
           <br />
-          <select type="text" id="Priority">
-            <option value="" disabled selected>
-              Choose Task
-            </option>
-            <option value="">Daily Task</option>
-            <option value="">Weekly Task</option>
-            <option value="">Monthly Task</option>
+          <select type="text" name="Category" id="Priority" onChange={(e) => setCategory(e.target.value)}>
+            <option value="Daily Task">Daily Task</option>
+            <option value="Weekly Task">Weekly Task</option>
+            <option value="Monthly Task">Monthly Task</option>
           </select>
         </div>
-
         <div className="Text-Area">
           <label htmlFor="Task-desc">Priority level</label>
           <br />
           <textarea
-            name=""
+            name="TaskDesc"
             id="Task-desc"
             cols="30"
             rows="10"
             placeholder="Write important notes"
             className="Task-desc"
+            value={taskDesc}
+            onChange={(e) => setTaskDesc(e.target.value)}
           ></textarea>
         </div>
         <div className="confirm-btn-cnt">
-          <button className="confirm-btn">Add to List</button>
+          <button className="confirm-btn" type="submit">Add to List</button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

@@ -10,6 +10,10 @@ const Navbar = () => {
     setSidebar(!sidebar);
   }
 
+  const closeSidebar = () => {
+    setSidebar(false);
+  };
+
   return (
     <>
     <nav className='nav'>
@@ -31,7 +35,7 @@ const Navbar = () => {
       </div>
     </nav>
     {
-      sidebar && <Sidebar />
+      sidebar && <Sidebar handleSidebar={closeSidebar}/>
     }
     </>
   )

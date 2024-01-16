@@ -1,4 +1,3 @@
-import React from 'react'
 import './Edit_Task.css'
 
 const Edit_Task = () => {

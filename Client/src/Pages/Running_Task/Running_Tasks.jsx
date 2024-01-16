@@ -1,38 +1,50 @@
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from 'react'
 import Task_Card from '../../Components/Task_Card/Task_Card'
 import './Running_Task.css'
 import { data } from '../../Task_Data'
+import axios from 'axios'
 
 const Running_Tasks = () => {
 
   const [panding, setPanding] = useState([]);
+  const [allTask, setAllTask] = useState([]);
 
   useEffect(() => {
-    try {
-      let PandingTask = [];
-      data.forEach((item) => {
-        if (item.Status !== "Completed") {
-          PandingTask.push(item);
+    axios.get('http://localhost:3000/')
+      .then(response => {
+        setAllTask(response.data);
+        try {
+          let PandingTask = [];
+          data.forEach((item) => {
+            if (item.Status !== "Completed") {
+              PandingTask.push(item);
+            }
+          })
+          setPanding(PandingTask);
+        } catch (e) {
+          console.error(e);
         }
       })
-      setPanding(PandingTask);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [])
+      .catch(error => {
+        console.error('Error fetching tasks:', error);
+      });
+  }, [allTask])
 
   return (
     <div className='running-cnt'>
-           <div className="top-cont">
+      <div className="top-cont">
         <div className="top-title">
           <p>Running Task</p>
         </div>
-        </div>
+      </div>
       <div className='datacard-cnt'>
         {
-          panding.map((item, i) => {
+          allTask.map((item, i) => {
+            const startDate = new Date(item.StartDate);
+            // Format the dates as "dd/mm/yyyy"
+            const formattedStartDate = startDate.toLocaleDateString('en-GB');
             return (
-              <Task_Card key={i} Start={item.Start} Title={item.Title} />
+              <Task_Card key={i} Start={formattedStartDate} Title={item.Title} />
             )
           })
         }

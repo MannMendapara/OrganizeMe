@@ -6,17 +6,29 @@ const TaskSchema = new mongoose.Schema({
         required: true,
     },
     StartDate: {
-        type: String,
+        type: Date,
         required: true
     },
     EndDate: {
-        type: String,
+        type: Date,
         required: true
     },
     Status: {
         type: String,
-        required: true,
+        required: true
     },
+    TaskDesc: {
+        type: String,
+        required: true
+    },
+    Category: {
+        type: String,
+        required: true
+    },
+    Priority: {
+        type: String,
+        required: true
+    }
 });
 
 const Task = mongoose.model('Task', TaskSchema);

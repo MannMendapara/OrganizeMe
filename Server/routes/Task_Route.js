@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import Task from "../models/Task_Model.js";
 import mongoose from "mongoose";
 
@@ -18,9 +18,17 @@ Task_router.get("/", async (req, res) => {
 // Add the task to database
 Task_router.post("/add", async (req, res) => {
   try {
-    const { Title, StartDate, EndDate, Status } = req.body;
+    const { Title, EndDate, Priority, Category, TaskDesc } = req.body;
+    const StartDate = new Date();
+
     // Check For Empty field
-    if (!Title || !StartDate || !EndDate || !Status) {
+    if (
+      !Title ||
+      !EndDate ||
+      !TaskDesc ||
+      !Category ||
+      !Priority
+    ) {
       return res
         .status(400)
         .json({ error: "Please provide all required fields" });
@@ -30,7 +38,10 @@ Task_router.post("/add", async (req, res) => {
       Title,
       StartDate,
       EndDate,
-      Status,
+      Status: "Completed",
+      TaskDesc,
+      Category,
+      Priority,
     });
     res.status(201).json(newTask);
   } catch (error) {

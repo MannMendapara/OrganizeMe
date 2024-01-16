@@ -27,4 +27,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.7rem;
+}
+
+.completed {
+  color: var(--bg);
 }/*# sourceMappingURL=Task_Card.css.map */
