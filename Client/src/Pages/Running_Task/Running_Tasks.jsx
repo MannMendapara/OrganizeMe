@@ -23,6 +23,11 @@ const Running_Tasks = () => {
 
   return (
     <div className='running-cnt'>
+           <div className="top-cont">
+        <div className="top-title">
+          <p>Running Task</p>
+        </div>
+        </div>
       <div className='datacard-cnt'>
         {
           panding.map((item, i) => {

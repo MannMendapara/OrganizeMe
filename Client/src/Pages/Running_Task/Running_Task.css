@@ -1,3 +1,29 @@
 .running-cnt {
   padding-top: 75px;
+}
+
+.top-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.top-title {
+  width: 569px;
+  height: 117px;
+  border-radius: 4px;
+  background: #83C5BE;
+}
+
+.top-title p {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }/*# sourceMappingURL=Running_Task.css.map */
