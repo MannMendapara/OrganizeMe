@@ -27,4 +27,10 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.7rem;
+}
+
+@media screen and (max-width: 1290px) {
+  .card-container {
+    margin: 5px;
+  }
 }/*# sourceMappingURL=Task_Card.css.map */

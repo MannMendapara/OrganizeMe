@@ -5,9 +5,9 @@
 }
 
 .running-task-cnt {
-  width: 50%;
+  width: 800px;
   position: relative;
-  padding: 2rem 2rem 2rem 3rem;
+  padding: 2rem;
 }
 
 .running-task-cnt::before {
@@ -22,8 +22,8 @@
 }
 
 .completed-task-cnt {
-  width: 50%;
-  padding: 2rem 2rem 2rem 3rem;
+  width: 800px;
+  padding: 2rem;
 }
 
 .main-title {
@@ -94,4 +94,15 @@
 
 .add-task-btn:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 1235px) {
+  .running-task-cnt {
+    width: 100%;
+    padding: 1rem;
+  }
+  .completed-task-cnt {
+    width: 100%;
+    padding: 1rem;
+  }
 }/*# sourceMappingURL=Home.css.map */
