@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './Edit_Task.css'
 import axios from 'axios'
 
-const Edit_Task = ({ taskId }) => {
+const Edit_Task = ({ taskId , Editing}) => {
     //States
     const [taskData, setTaskData] = useState({
         Title: '',
@@ -43,6 +43,7 @@ const Edit_Task = ({ taskId }) => {
 
     return (
         <div className='model'>
+            <img src="./Images/Cross.png" alt="" className="close-icon" onClick={Editing}  />
             <form className='cont' onSubmit={(e) => handleFormSubmit(e)}>
                 <div className="input-field">
                     <label htmlFor="Task-Title">Task-Title</label>
