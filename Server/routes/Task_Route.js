@@ -15,6 +15,21 @@ Task_router.get("/", async (req, res) => {
   }
 });
 
+//Get Element by Id
+Task_router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await Task.findById(id);
+    if (!data) {
+      return res.status(404).json({ error: "Task not found" });
+    }
+    res.status(200).json(data);
+  } catch (e) {
+    console.error("Error fetching data:", e);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // Add the task to database
 Task_router.post("/add", async (req, res) => {
   try {
@@ -22,13 +37,7 @@ Task_router.post("/add", async (req, res) => {
     const StartDate = new Date();
 
     // Check For Empty field
-    if (
-      !Title ||
-      !EndDate ||
-      !TaskDesc ||
-      !Category ||
-      !Priority
-    ) {
+    if (!Title || !EndDate || !TaskDesc || !Category || !Priority) {
       return res
         .status(400)
         .json({ error: "Please provide all required fields" });
@@ -38,7 +47,7 @@ Task_router.post("/add", async (req, res) => {
       Title,
       StartDate,
       EndDate,
-      Status: "Completed",
+      Status: "Pending",
       TaskDesc,
       Category,
       Priority,

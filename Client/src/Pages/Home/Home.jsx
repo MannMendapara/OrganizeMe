@@ -64,7 +64,7 @@ const Home = () => {
               // Format the dates as "dd/mm/yyyy"
               const formattedStartDate = startDate.toLocaleDateString('en-GB');
               return (
-                <Task_Card key={i} Start={formattedStartDate} Title={item.Title} />
+                <Task_Card key={i} Start={formattedStartDate} Title={item.Title} id={item._id}/>
               )
             })
           }
@@ -92,14 +92,14 @@ const Home = () => {
               const formattedStartDate = startDate.toLocaleDateString('en-GB');
               const formattedEndDate = endDate.toLocaleDateString('en-GB');
               return (
-                <Task_Card key={i} Start={formattedStartDate} Title={item.Title} End={formattedEndDate} Status={item.Status} />
+                <Task_Card key={i} id={item._id} Start={formattedStartDate} Title={item.Title} End={formattedEndDate} Status={item.Status} />
               )
             })
           }
         </div>
         {completed.length >= 5 ? (
           <div className="btn-cnt">
-            <button className='btn' onClick={handleAllRunning}>
+            <button className='btn' onClick={handleAllCompleted}>
               All Completed Tasks
             </button>
           </div>) : ""

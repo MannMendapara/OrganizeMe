@@ -30,7 +30,9 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
                     </div>
                     <div className='card-icons'>
                         <img src="./Images/icon.png" alt="Info" />
-                        <img src="./Images/write.png" alt="Edit" onClick={handleEditClick}/>
+                        { Status !== "Completed" ?
+                            (<img src="./Images/write.png" alt="Edit" onClick={handleEditClick}/>) : ""
+                        }
                         <img src="./Images/delete.png" alt="Delete" />
                     </div>
                     {isEditing && <Edit_Task taskId={id} />}
