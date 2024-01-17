@@ -10,6 +10,10 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
         setIsEditing(true);
     };
 
+    const handleCloseEdit=()=>{
+        setIsEditing(false);
+    }
+
     return (
         <>
             <div className='card-container'>
@@ -35,7 +39,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
                         }
                         <img src="./Images/delete.png" alt="Delete" />
                     </div>
-                    {isEditing && <Edit_Task taskId={id} />}
+                    {isEditing && <Edit_Task taskId={id} Editing={handleCloseEdit} />}
                 </div>
             </div>
         </>
