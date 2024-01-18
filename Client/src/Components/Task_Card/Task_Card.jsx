@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Task_Card.css'
 import Edit_Task from '../Edit_Task/Edit_Task'
+import axios from 'axios';
 
 const Task_Card = ({ id, Status, Start, End, Title }) => {
 
@@ -10,8 +11,16 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
         setIsEditing(true);
     };
 
-    const handleCloseEdit=()=>{
+    const handleCloseEdit = () => {
         setIsEditing(false);
+    }
+
+    const handleDelete = async () => {
+        const res = await axios.delete(`http://localhost:3000/delete/${id}`);
+        
+        if (!res) {
+            console.error("Error")
+        }
     }
 
     return (
@@ -34,10 +43,10 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
                     </div>
                     <div className='card-icons'>
                         <img src="./Images/icon.png" alt="Info" />
-                        { Status !== "Completed" ?
-                            (<img src="./Images/write.png" alt="Edit" onClick={handleEditClick}/>) : ""
+                        {Status !== "Completed" ?
+                            (<img src="./Images/write.png" alt="Edit" onClick={handleEditClick} />) : ""
                         }
-                        <img src="./Images/delete.png" alt="Delete" />
+                        <img src="./Images/delete.png" alt="Delete" onClick={handleDelete} />
                     </div>
                     {isEditing && <Edit_Task taskId={id} Editing={handleCloseEdit} />}
                 </div>

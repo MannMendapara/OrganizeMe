@@ -69,7 +69,7 @@ const Home = () => {
             })
           }
         </div>
-        {panding.length >= 5 ? (
+        {panding.length >= 6 ? (
           <div className="btn-cnt">
             <button className='btn' onClick={handleAllRunning}>
               All Running Tasks
@@ -97,7 +97,7 @@ const Home = () => {
             })
           }
         </div>
-        {completed.length >= 5 ? (
+        {completed.length >= 6 ? (
           <div className="btn-cnt">
             <button className='btn' onClick={handleAllCompleted}>
               All Completed Tasks

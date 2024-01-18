@@ -63,10 +63,10 @@ Task_router.post("/add", async (req, res) => {
 Task_router.put("/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { Title, StartDate, EndDate, Status } = req.body;
+    const { Title, EndDate, Priority, Category, TaskDesc } = req.body;
 
     // Check For Empty field
-    if (!Title || !StartDate || !EndDate || !Status) {
+    if (!Title || !Priority || !EndDate || !Category || !TaskDesc) {
       return res
         .status(400)
         .json({ error: "Please provide all required fields" });
@@ -75,7 +75,7 @@ Task_router.put("/update/:id", async (req, res) => {
     // Update Task by ID
     const updatedTask = await Task.findByIdAndUpdate(
       id,
-      { Title, StartDate, EndDate, Status },
+      { Title, EndDate, Status: "Running", Priority, Category, TaskDesc },
       { new: true } // Return the updated document
     );
 

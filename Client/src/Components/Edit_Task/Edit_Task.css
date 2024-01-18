@@ -9,16 +9,6 @@
   justify-content: center;
 }
 
-.close-icon {
-  position: absolute;
-  top: 20px;
-  right: 19%;
-  cursor: pointer;
-  z-index: 1;
-  height: 1.4rem;
-  width: 1.4rem;
-}
-
 .model::before {
   content: "";
   position: absolute;
@@ -42,6 +32,16 @@
   flex-wrap: wrap;
 }
 
+.close-icon {
+  position: absolute;
+  cursor: pointer;
+  height: 1.4rem;
+  width: 1.4rem;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
 .input-field {
   margin-right: 3rem;
 }
@@ -60,6 +60,22 @@
   background: rgba(0, 109, 119, 0);
   font-size: 14px;
   padding: 0 10px 0 10px;
+}
+
+#Task-Title::-moz-placeholder {
+  color: rgb(99, 99, 99);
+}
+
+#Task-Title::placeholder {
+  color: rgb(99, 99, 99);
+}
+
+#Task-desc::-moz-placeholder {
+  color: rgb(99, 99, 99);
+}
+
+#Task-desc::placeholder {
+  color: rgb(99, 99, 99);
 }
 
 .Task-desc {
@@ -116,4 +132,9 @@
   color: var(--dark-bg);
   font-weight: 520;
   margin-left: 3rem;
+}
+
+.end-date-span {
+  margin-left: 90px;
+  font-size: 0.8rem;
 }/*# sourceMappingURL=Edit_Task.css.map */
