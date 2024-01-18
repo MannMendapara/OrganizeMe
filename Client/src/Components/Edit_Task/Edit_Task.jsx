@@ -21,6 +21,16 @@ const Edit_Task = ({ taskId, Editing }) => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        const startdate = taskData.StartDate.toString().substring(0, 10);
+        const enddate = taskData.EndDate ? taskData.EndDate.toString().substring(0, 10) : EndDate.toString().substring(0, 10);
+        // Convert string dates to Date objects
+        const startDateObj = new Date(startdate);
+        const endDateObj = new Date(enddate);
+        // Check if endDate is greater than startDate
+        if (endDateObj < startDateObj) {
+            console.error("End date must be greater than the start date.");
+            return;
+        }
         try {
             axios.put(`http://localhost:3000/update/${taskId}`, {
                 Title: Title ? Title : taskData.Title,
@@ -36,6 +46,26 @@ const Edit_Task = ({ taskId, Editing }) => {
         } catch (error) {
             console.error('Error Updating task data:', error);
         }
+    }
+
+    const handleMarkAsComplete = async () => {
+        try {
+            const response = await axios.put(`http://localhost:3000/status/${taskId}`);
+            if (!response) {
+                console.error("Error");
+            }
+            Editing();
+        } catch (error) {
+            console.error("Error: ", error);
+        }
+    }
+
+    const handleDeleteTask = async () => {
+        const res = await axios.delete(`http://localhost:3000/delete/${taskId}`);
+        if (!res) {
+            console.error("Error")
+        }
+        Editing();
     }
 
     useEffect(() => {
@@ -71,7 +101,7 @@ const Edit_Task = ({ taskId, Editing }) => {
                 </div>
                 <div className="input-field">
                     <label htmlFor="End-date">End-Date</label>
-                    <span className='end-date-span'>{`(${taskData.EndDate.substring(0, 10)})`}</span>
+                    <span className='end-date-span'>{`(${taskData.EndDate.substring(0, 10).split('-').reverse().join('-')})`}</span>
                     <br />
                     <input type="date" id='End-date' onChange={(e) => { setEndDate(e.target.value) }} />
                 </div>
@@ -104,8 +134,8 @@ const Edit_Task = ({ taskId, Editing }) => {
                     <button className='confirm-btn' type='submit'>Confirm Edit</button>
                 </div>
                 <div className='markasdone-delete-btn-cnt'>
-                    <button className='markasdone-btn'>Mark as Done</button>
-                    <button className='delete-btn'>Delete</button>
+                    <button className='markasdone-btn' onClick={handleMarkAsComplete}>Mark as Done</button>
+                    <button className='delete-btn' onClick={handleDeleteTask}>Delete</button>
                 </div>
             </form>
         </div>

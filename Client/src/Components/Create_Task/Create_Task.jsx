@@ -22,6 +22,16 @@ const Create_Task = () => {
       console.error("Please fill in all required fields.");
       return;
     }
+    const startdate = new Date().toISOString().substring(0, 10);
+    const enddate = endDate.substring(0,10);    
+    // Convert string dates to Date objects
+    const startDateObj = new Date(startdate);
+    const endDateObj = new Date(enddate);
+    // Check if endDate is greater than startDate
+    if (endDateObj < startDateObj) {
+      console.error("End date must be greater than the start date.");
+      return;
+    }
 
     try {
       // Send the form data to the server

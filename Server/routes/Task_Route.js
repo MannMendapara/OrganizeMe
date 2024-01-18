@@ -115,4 +115,24 @@ Task_router.delete("/delete/:id", async (req, res) => {
   }
 });
 
+Task_router.put("/status/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    // Find the task by ID
+    const task = await Task.findById(id);
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    // Update the status to 'completed'
+    task.Status = "Completed";
+    task.EndDate = new Date();
+    // Save the updated task
+    await task.save();
+    res.json({ message: "Task status updated to completed" });
+  } catch (error) {
+    console.error("Error updating task status:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 export default Task_router;

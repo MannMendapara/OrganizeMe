@@ -122,6 +122,10 @@
   font-size: 1rem;
 }
 
+.markasdone-btn:hover {
+  cursor: pointer;
+}
+
 .delete-btn {
   width: 184px;
   height: 41px;
@@ -132,6 +136,10 @@
   color: var(--dark-bg);
   font-weight: 520;
   margin-left: 3rem;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
 }
 
 .end-date-span {
