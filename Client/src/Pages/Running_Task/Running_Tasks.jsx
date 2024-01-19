@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Task_Card from '../../Components/Task_Card/Task_Card'
 import './Running_Task.css'
-import { data } from '../../Task_Data'
 import axios from 'axios'
 
 const Running_Tasks = () => {
@@ -15,7 +14,7 @@ const Running_Tasks = () => {
         setAllTask(response.data);
         try {
           let PandingTask = [];
-          data.forEach((item) => {
+          allTask.forEach((item) => {
             if (item.Status !== "Completed") {
               PandingTask.push(item);
             }
@@ -62,12 +61,12 @@ const Running_Tasks = () => {
         </div>     
       <div className='datacard-cnt'>
         {
-          allTask.map((item, i) => {
+          panding.map((item, i) => {
             const startDate = new Date(item.StartDate);
             // Format the dates as "dd/mm/yyyy"
             const formattedStartDate = startDate.toLocaleDateString('en-GB');
             return (
-              <Task_Card key={i} Start={formattedStartDate} Title={item.Title} />
+              <Task_Card key={i} Start={formattedStartDate} Title={item.Title} id={item._id}/>
             )
           })
         }

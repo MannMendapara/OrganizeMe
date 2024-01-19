@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./Create_Task.css";
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Create_Task = () => {
+
+  const Navigate = useNavigate();
+
   // State
   const [taskTitle, setTaskTitle] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -57,11 +61,11 @@ const Create_Task = () => {
       return;
     }
 
-    console.log(taskTitle, endDate, priority, category, taskDesc);
+    console.log(taskTitle,endDate,priority,category,taskDesc);
 
     try {
       // Send the form data to the server
-      const response = await axios.post('http://localhost:3000/add', {
+      await axios.post('http://localhost:3000/add', {
         Title: taskTitle,
         EndDate: endDate,
         Priority: priority,
@@ -69,7 +73,7 @@ const Create_Task = () => {
         TaskDesc: taskDesc,
       });
       console.log(response.data);
-      // Clear the form fields after successful submission
+      // Clear the form fields after successful submission (you may adjust this based on your needs)
       setTaskTitle('');
       setEndDate('');
       setPriority('');
@@ -89,39 +93,17 @@ const Create_Task = () => {
         <div className="input-field">
           <label htmlFor="Task-Title">Task-Title</label>
           <br />
-          <input
-            type="text"
-            id="Task-Title"
-            placeholder="Task-Title"
-            name="Title"
-            value={taskTitle}
-            onChange={(e) => setTaskTitle(e.target.value)}
-          />
-          {titleError && <p className="error-message">Please enter a task title</p>}
+          <input type="text" id="Task-Title" placeholder="Task-Title" name="Title" value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)}/>
         </div>
         <div className="input-field">
           <label htmlFor="End-date">End-Date</label>
           <br />
-          <input
-            type="date"
-            name="EndDate"
-            id="End-date"
-            placeholder="End-Date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-          {endDateError && <p className="error-message">Please select an end date</p>}
+          <input type="date" name="EndDate" id="End-date" placeholder="End-Date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
         </div>
         <div className="input-field">
           <label htmlFor="Priority">Priority</label>
           <br />
-          <select
-            type="text"
-            name="Priority"
-            id="Priority"
-            onChange={(e) => setPriority(e.target.value)}
-          >
-            <option value="">Select Priority</option>
+          <select type="text" name="Priority" id="Priority" onChange={(e) => setPriority(e.target.value)}>
             <option value="Very Important">Very Important</option>
             <option value="Important">Important</option>
             <option value="Less Important">Less Important</option>
@@ -131,13 +113,7 @@ const Create_Task = () => {
         <div className="input-field">
           <label htmlFor="Category">Category</label>
           <br />
-          <select
-            type="text"
-            name="Category"
-            id="Priority"
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="">Select Category</option>
+          <select type="text" name="Category" id="Priority" onChange={(e) => setCategory(e.target.value)}>
             <option value="Daily Task">Daily Task</option>
             <option value="Weekly Task">Weekly Task</option>
             <option value="Monthly Task">Monthly Task</option>

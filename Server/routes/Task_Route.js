@@ -63,10 +63,10 @@ Task_router.post("/add", async (req, res) => {
 Task_router.put("/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { Title, StartDate, EndDate, Status } = req.body;
+    const { Title, EndDate, Priority, Category, TaskDesc } = req.body;
 
     // Check For Empty field
-    if (!Title || !StartDate || !EndDate || !Status) {
+    if (!Title || !Priority || !EndDate || !Category || !TaskDesc) {
       return res
         .status(400)
         .json({ error: "Please provide all required fields" });
@@ -75,7 +75,7 @@ Task_router.put("/update/:id", async (req, res) => {
     // Update Task by ID
     const updatedTask = await Task.findByIdAndUpdate(
       id,
-      { Title, StartDate, EndDate, Status },
+      { Title, EndDate, Status: "Running", Priority, Category, TaskDesc },
       { new: true } // Return the updated document
     );
 
@@ -112,6 +112,26 @@ Task_router.delete("/delete/:id", async (req, res) => {
   } catch (error) {
     console.error("Error deleting task:", error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+Task_router.put("/status/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    // Find the task by ID
+    const task = await Task.findById(id);
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    // Update the status to 'completed'
+    task.Status = "Completed";
+    task.EndDate = new Date();
+    // Save the updated task
+    await task.save();
+    res.json({ message: "Task status updated to completed" });
+  } catch (error) {
+    console.error("Error updating task status:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

@@ -54,6 +54,7 @@
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 665px) {
   .links ul {
     gap: 15px;
@@ -75,4 +76,8 @@
   .links ul {
     gap: 10px;
   }
+=======
+.search-img:hover {
+  cursor: pointer;
+>>>>>>> c2a4f64fb62dfea52157e74e874a53c0bc54ab31
 }/*# sourceMappingURL=Navbar.css.map */

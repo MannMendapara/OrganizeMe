@@ -60,7 +60,7 @@ const Completed_Task = () => {
             const formattedStartDate = startDate.toLocaleDateString('en-GB');
             const formattedEndDate = endDate.toLocaleDateString('en-GB');
             return (
-              <Task_Card key={i} Start={formattedStartDate} Title={item.Title} End={formattedEndDate} Status={item.Status} />
+              <Task_Card key={i} id={item._id} Start={formattedStartDate} Title={item.Title} End={formattedEndDate} Status={item.Status} />
             )
           })
         }
