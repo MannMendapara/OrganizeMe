@@ -52,7 +52,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
                             End && <div className="end-date des">{End}</div>
                         }
                         {
-                            Status ? (<div className='completed'>Completed</div>) : (
+                            Status === "Completed" ? (<div className='completed'>Completed</div>) : (
                                 <div className="complete des">
                                     <input type="checkbox" checked={Checked} onChange={() => setChecked(true)} /> Mark as Complete
                                 </div>
