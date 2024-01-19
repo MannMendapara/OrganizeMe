@@ -36,6 +36,20 @@ const Completed_Task = () => {
           <p>Completed Task</p>
         </div>
       </div>
+      <div className='complt-sort-task'>
+        <div className="priority">
+        <select type="text" name="Priority" className="sorting" id='by-priority'>
+        <option value="default" disabled selected>By Priority</option>
+            <option value="Very Important">Very Important</option>
+            <option value="Important">Important</option>
+            <option value="Less Important">Less Important</option>
+          </select>
+        </div>
+        <div className='search' id='search-bar'>
+          <input type="text" placeholder='Search'/>
+          <img src="./Images/Search.png" alt="Icon" />
+        </div>
+</div>
       <div className='datacard-cnt'>
         {
           completed.map((item, i) => {

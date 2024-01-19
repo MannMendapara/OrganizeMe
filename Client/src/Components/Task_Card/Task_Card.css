@@ -29,11 +29,17 @@
   gap: 0.7rem;
 }
 
+.completed {
+  color: var(--bg);
+}
+
 @media screen and (max-width: 1290px) {
   .card-container {
     margin: 5px;
   }
 }
-.completed {
-  color: var(--bg);
+@media screen and (max-width: 325px) {
+  .card {
+    width: 200px;
+  }
 }/*# sourceMappingURL=Task_Card.css.map */

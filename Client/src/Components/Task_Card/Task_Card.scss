@@ -1,7 +1,6 @@
 .card-container {
     margin: 1rem 2rem 1rem 2rem;
 }
-
 .card {
     display: flex;
     justify-content: flex-start;
@@ -11,16 +10,13 @@
     border-radius: 7px;
     margin: 10px 0px 5px 0px;
 }
-
 .des {
     margin-bottom: 8px;
     color: var(--bg);
 }
-
 .data {
     width: 90%;
 }
-
 .card-icons {
     display: flex;
     align-items: center;
@@ -28,12 +24,18 @@
     justify-content: center;
     gap: 0.7rem;
 }
+.completed {
+    color: var(--bg);
+}
 
 @media screen and (max-width:1290px){
     .card-container {
         margin:5px;
     }
 }
-.completed {
-    color: var(--bg);
+
+@media screen and (max-width:325px){
+    .card{
+        width:200px;
+    }
 }

@@ -96,6 +96,28 @@
   cursor: pointer;
 }
 
+.add-task-btn::after {
+  content: "";
+  width: 5rem;
+  position: absolute;
+  top: -30px;
+  left: -20px;
+  opacity: 0;
+  font-size: 0.8rem;
+  color: var(--bg);
+  background: var(--dark-bg);
+  padding: 5px;
+  z-index: 5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.add-task-btn:hover::after {
+  content: "Add Task";
+  opacity: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (max-width: 1235px) {
   .running-task-cnt {
     width: 100%;
@@ -105,25 +127,4 @@
     width: 100%;
     padding: 1rem;
   }
-}
-.add-task-btn::after {
-  content: ""; /* Ensure content is set to enable the pseudo-element */
-  width: 5rem;
-  position: absolute;
-  top: -30px;
-  left: -20px;
-  opacity: 0; /* Initially hide the pseudo-element */
-  font-size: 0.8rem;
-  color: var(--bg);
-  background: var(--dark-bg);
-  padding: 5px;
-  z-index: 5;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a box shadow for a subtle effect */
-}
-
-.add-task-btn:hover::after {
-  content: "Add Task";
-  opacity: 1; /* Make the pseudo-element visible on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }/*# sourceMappingURL=Home.css.map */

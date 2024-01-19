@@ -1,3 +1,14 @@
 .completed-cnt {
     padding-top: 75px;
 }
+
+.complt-sort-task{
+    display: flex;
+    justify-content: space-around;
+    gap:20%;
+
+}
+
+#by-priority{
+    margin: 30px 0px 0px 3rem;
+}
