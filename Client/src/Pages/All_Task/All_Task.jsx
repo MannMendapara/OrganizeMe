@@ -31,7 +31,6 @@ const All_Task = () => {
           allTask.map((item, i) => {
             const startDate = new Date(item.StartDate);
             const endDate = new Date(item.EndDate);
-
             // Format the dates as "dd/mm/yyyy"
             const formattedStartDate = startDate.toLocaleDateString('en-GB');
             const formattedEndDate = endDate.toLocaleDateString('en-GB');

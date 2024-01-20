@@ -2,9 +2,9 @@ import './Navbar.css'
 import Sidebar from '../Sidebar/Sidebar'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import Searched_Tasks from '../../Pages/Searched_Task/Searched_Tasks'
 
 const Navbar = () => {
-
   const [sidebar, setSidebar] = useState(false);
   const [alltask, setAlltask] = useState([]);
   const [inputval, setInputval] = useState('');
@@ -18,24 +18,23 @@ const Navbar = () => {
     setSidebar(false);
   };
 
-  const handleSearch = async () => {
+  const getData = async () => {
     try {
       const response = await axios.get('http://localhost:3000/');
       setAlltask(response.data);
-
-      const searchedArray = alltask.filter((task) =>
+      const searchedArray = response.data.filter((task) =>
         task.Title.toLowerCase().includes(inputval.toLowerCase())
       );
-
-      console.log(searchedArray);
       setFilteredTasks(searchedArray);
-
-      // Clear the input field
-      setInputval('');
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.error(e);
     }
   };
+
+  useEffect(() => {
+    getData();
+  }, [inputval, alltask]);
+
 
 
   return (
@@ -47,7 +46,7 @@ const Navbar = () => {
           </div>
           <div className='search-bar'>
             <input type="text" placeholder='Search' value={inputval} onChange={e => setInputval(e.target.value)} />
-            <img src="./Images/Search.png" alt="Icon" className='search-img' onClick={handleSearch} />
+            <img src="./Images/Search.png" alt="Icon" className='search-img' />
           </div>
           <div className='links'>
             <ul>
@@ -60,6 +59,9 @@ const Navbar = () => {
       </nav>
       {
         sidebar && <Sidebar handleSidebar={closeSidebar} />
+      }
+      {
+        (inputval) ? <Searched_Tasks data={filteredTask} /> : ""
       }
     </>
   )
