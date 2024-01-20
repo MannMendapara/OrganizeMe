@@ -38,6 +38,8 @@
     margin: 5px;
   }
 }
-.completed {
-  color: var(--bg);
+@media screen and (max-width: 325px) {
+  .card {
+    width: 200px;
+  }
 }/*# sourceMappingURL=Task_Card.css.map */

@@ -1,7 +1,7 @@
 .nav {
     height: 71px;
     width: 100dvw;
-    z-index: 2;
+    z-index: 1;
     position: fixed;
     top: 0;
 }
@@ -54,7 +54,34 @@
     cursor: pointer;
 }
 
+@media screen and (max-width:665px){
+    .links ul {
+        gap: 15px;
+    }
+  .search-bar{
+    gap:30px;
+  }
+
+    .container{
+        padding: 0 2rem 0 2rem;
+    }
+
+   
+}
+
+@media screen and (max-width:511px){
+    .ham-btn{
+        margin-right: 20px;
+    }
+
+    .links{
+        margin-left: 20px;
+    }
+    .links ul {
+        gap: 10px;
+    }
 .search-img:hover {
     cursor: pointer;
 }
 
+}

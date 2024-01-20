@@ -14,24 +14,54 @@ const Create_Task = () => {
   const [category, setCategory] = useState('');
   const [taskDesc, setTaskDesc] = useState('');
 
-  //Functions
+  // Validation state
+  const [titleError, setTitleError] = useState(false);
+  const [endDateError, setEndDateError] = useState(false);
+  const [priorityError, setPriorityError] = useState(false);
+  const [categoryError, setCategoryError] = useState(false);
+  const [descError, setDecsError] = useState(false);
+
+  // Functions
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Validate the form fields (you may add more validation logic)
-    if (!taskTitle || !endDate || !priority || !category) {
+    
+    // Validate the form fields
+    if (!taskTitle) {
+      setTitleError(true);
+    } else {
+      setTitleError(false);
+    }
+
+    if (!endDate) {
+      setEndDateError(true);
+    } else {
+      setEndDateError(false);
+    }
+
+    if (!priority) {
+      setPriorityError(true);
+    } else {
+      setPriorityError(false);
+    }
+
+    if (!category) {
+      setCategoryError(true);
+    } else {
+      setCategoryError(false);
+    }
+    if (!taskDesc) {
+      setDecsError(true);
+    } else {
+      setDecsError(false);
+    }
+
+    // If any validation errors, prevent form submission
+    if (titleError || endDateError || priorityError || categoryError || descError ) {
       console.error("Please fill in all required fields.");
       return;
     }
-    const startdate = new Date().toISOString().substring(0, 10);
-    const enddate = endDate.substring(0,10);    
-    // Convert string dates to Date objects
-    const startDateObj = new Date(startdate);
-    const endDateObj = new Date(enddate);
-    // Check if endDate is greater than startDate
-    if (endDateObj < startDateObj) {
-      console.error("End date must be greater than the start date.");
-      return;
-    }
+
+    console.log(taskTitle,endDate,priority,category,taskDesc);
 
     try {
       // Send the form data to the server
@@ -41,9 +71,14 @@ const Create_Task = () => {
         Priority: priority,
         Category: category,
         TaskDesc: taskDesc,
-      }).then(() => {
-        Navigate('/')
       });
+      console.log(response.data);
+      // Clear the form fields after successful submission (you may adjust this based on your needs)
+      setTaskTitle('');
+      setEndDate('');
+      setPriority('');
+      setCategory('');
+      setTaskDesc('');
     } catch (error) {
       console.error("Error adding task:", error);
     }
@@ -58,32 +93,32 @@ const Create_Task = () => {
         <div className="input-field">
           <label htmlFor="Task-Title">Task-Title</label>
           <br />
-          <input type="text" id="Task-Title" placeholder="Task-Title" name="Title" value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} />
+          <input type="text" id="Task-Title" placeholder="Task-Title" name="Title" value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)}/>
         </div>
         <div className="input-field">
           <label htmlFor="End-date">End-Date</label>
           <br />
-          <input type="date" name="EndDate" id="End-date" placeholder="End-Date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+          <input type="date" name="EndDate" id="End-date" placeholder="End-Date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
         </div>
         <div className="input-field">
           <label htmlFor="Priority">Priority</label>
           <br />
-          <select type="text" name="Priority" id="Priority" defaultValue="Default" onChange={(e) => setPriority(e.target.value)}>
-            <option value="Default" disabled>Choose Priority</option>
+          <select type="text" name="Priority" id="Priority" onChange={(e) => setPriority(e.target.value)}>
             <option value="Very Important">Very Important</option>
             <option value="Important">Important</option>
             <option value="Less Important">Less Important</option>
           </select>
+          {priorityError && <p className="error-message">Please select a priority</p>}
         </div>
         <div className="input-field">
           <label htmlFor="Category">Category</label>
           <br />
-          <select type="text" name="Category" id="Priority" defaultValue="Default" onChange={(e) => setCategory(e.target.value)}>
-            <option value="Default" disabled>Choose Category</option>
+          <select type="text" name="Category" id="Priority" onChange={(e) => setCategory(e.target.value)}>
             <option value="Daily Task">Daily Task</option>
             <option value="Weekly Task">Weekly Task</option>
             <option value="Monthly Task">Monthly Task</option>
           </select>
+          {categoryError && <p className="error-message">Please select a category</p>}
         </div>
         <div className="Text-Area">
           <label htmlFor="Task-desc">Priority level</label>
@@ -98,6 +133,7 @@ const Create_Task = () => {
             value={taskDesc}
             onChange={(e) => setTaskDesc(e.target.value)}
           ></textarea>
+           {descError && <p className="error-message">Please enter a task description</p>}
         </div>
         <div className="confirm-btn-cnt">
           <button className="confirm-btn" type="submit">Add to List</button>

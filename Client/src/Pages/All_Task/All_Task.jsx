@@ -26,6 +26,37 @@ const All_Task = () => {
           <p>All Task</p>
         </div>
       </div>
+      <div className="top-bar-menu">
+      <div className='sort-task'>
+        <div className="priority">
+        <select type="text" name="Priority" className="sorting">
+        <option value="default" disabled selected>By Priority</option>
+            <option value="Very Important">Very Important</option>
+            <option value="Important">Important</option>
+            <option value="Less Important">Less Important</option>
+          </select>
+        </div>
+        <div className="category">
+        <select type="text" name="Category" className="sorting" >
+        <option value="default" disabled selected>By Category</option>
+            <option value="Daily Task">Daily Task</option>
+            <option value="Weekly Task">Weekly Task</option>
+            <option value="Monthly Task">Monthly Task</option>
+          </select></div>
+
+          <div className="status">
+        <select type="text" name="Category" className="sorting" >
+        <option value="default" disabled selected>By Status</option>
+            <option value="Running">Running</option>
+            <option value="Completed">Completed</option>
+            
+          </select></div>
+      </div>
+      <div className='search'>
+          <input type="text" placeholder='Search'/>
+          <img src="./Images/Search.png" alt="Icon" />
+        </div>
+        </div>  
       <div className='datacard-cnt'>
         {
           allTask.map((item, i) => {
