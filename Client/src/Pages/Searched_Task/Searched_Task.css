@@ -1,0 +1,19 @@
+.main-cnt {
+  padding-top: 110px;
+}
+
+.Result-title {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.Result-title h2 {
+  font-weight: 600;
+  color: var(--dark-bg);
+  text-align: center;
+}
+
+.nodatafound {
+  text-align: center;
+  color: red;
+}/*# sourceMappingURL=Searched_Task.css.map */
