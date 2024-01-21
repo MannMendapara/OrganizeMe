@@ -10,4 +10,11 @@
 
 #by-priority {
   margin: 30px 0px 0px 3rem;
+}
+
+/* Completed_Task.css */
+.search-result-line {
+  width: 100%;
+  margin: 15px 0;
+  border: 1px solid #ddd; /* Adjust the border style as needed */
 }/*# sourceMappingURL=Completed_Task.css.map */
