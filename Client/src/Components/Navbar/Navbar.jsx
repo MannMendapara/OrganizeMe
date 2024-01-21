@@ -60,9 +60,9 @@ const Navbar = () => {
       {
         sidebar && <Sidebar handleSidebar={closeSidebar} />
       }
-      {
-        (inputval) ? <Searched_Tasks data={filteredTask} /> : ""
-      }
+        {
+          (inputval) ? <div className='search-cnt'><Searched_Tasks data={filteredTask} /> </div>: ""
+        }
     </>
   )
 }

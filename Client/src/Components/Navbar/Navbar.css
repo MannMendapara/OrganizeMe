@@ -54,6 +54,10 @@
   cursor: pointer;
 }
 
+.search-cnt {
+  padding-top: 110px;
+}
+
 @media screen and (max-width: 665px) {
   .links ul {
     gap: 15px;

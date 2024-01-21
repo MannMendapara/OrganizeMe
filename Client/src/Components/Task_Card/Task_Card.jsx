@@ -5,32 +5,40 @@ import axios from "axios";
 import Information_Task from "../../Pages/Information_Task/Information_Task";
 
 const Task_Card = ({ id, Status, Start, End, Title }) => {
+  // States
   const [isEditing, setIsEditing] = useState(false);
   const [isInfo, setIsInfo] = useState(false);
   const [Checked, setChecked] = useState(false);
 
+  // Function for open edit popup
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
+  // Function for close edit popup
   const handleCloseEdit = () => {
     setIsEditing(false);
   };
 
+  // Function for delete task
   const handleDelete = async () => {
     const res = await axios.delete(`http://localhost:3000/delete/${id}`);
-
     if (!res) {
       console.error("Error");
     }
   };
 
+  // Function for Open Information of task
   const handleInfo = async () => {
     setIsInfo(true);
   };
+
+  // Function for Close Information of task
   const handleCloseInfo = async () => {
     setIsInfo(false);
   };
+
+  //UseEffect
   useEffect(() => {
     const updateStatus = async () => {
       try {
@@ -95,7 +103,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
           </div>
           {isEditing && <Edit_Task taskId={id} Editing={handleCloseEdit} />}
           {isInfo && (
-            <Information_Task taskId={id} Information={handleCloseInfo} />
+            <Information_Task taskId={id} CloseInformation={handleCloseInfo} />
           )}
         </div>
       </div>

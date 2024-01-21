@@ -6,37 +6,28 @@ import axios from "axios";
 
 const Completed_Task = () => {
   const [completed, setCompleted] = useState([]);
-  const [allTask, setAllTask] = useState([]);
-  const [serchCmpleted, setSearchCmplted] = useState([]);
   const [inputVal, setInputVal] = useState("");
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/")
       .then((response) => {
-        setAllTask(response.data);
-        try {
-          let completedTask = [];
-
-          allTask.forEach((item) => {
-            if (item.Status === "Completed") {
-              completedTask.push(item);
-            }
-          });
-          setCompleted(completedTask);
-          const searchedArray = completedTask.filter((task) =>
-            task.Title.toLowerCase().includes(inputVal.toLowerCase())
-          );
-
-          setSearchCmplted(searchedArray);
-        } catch (e) {
-          console.error(e);
-        }
+        const allTask = response.data;
+        const completedTasks = allTask.filter((task) => task.Status === "Completed");
+        setCompleted(completedTasks);
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
       });
-  }, [allTask, inputVal]);
+  }, []);
+
+  const searchTasks = () => {
+    return completed.filter((task) =>
+      task.Title.toLowerCase().includes(inputVal.toLowerCase())
+    );
+  };
+
+  const searchedTasks = searchTasks();
 
   return (
     <div className="completed-cnt">
@@ -48,12 +39,7 @@ const Completed_Task = () => {
 
       <div className="complt-sort-task">
         <div className="priority">
-          <select
-            type="text"
-            name="Priority"
-            className="sorting"
-            id="by-priority"
-          >
+          <select type="text" name="Priority" className="sorting" id="by-priority">
             <option value="default" disabled selected>
               By Priority
             </option>
@@ -73,10 +59,10 @@ const Completed_Task = () => {
         </div>
       </div>
       <div className="serched-task-data">
-        {inputVal ? <Searched_Tasks data={serchCmpleted} /> : ""}
+        {inputVal ? <div className="search-task"><Searched_Tasks data={searchedTasks} /></div> : ""}
       </div>
       <div className="datacard-cnt">
-        {completed.map((item, i) => {
+        {!inputVal && completed.map((item, i) => {
           const startDate = new Date(item.StartDate);
           const endDate = new Date(item.EndDate);
 

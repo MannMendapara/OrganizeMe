@@ -1,1 +1,21 @@
-/*# sourceMappingURL=Information_Task.css.map */
+.info-cnt {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  height: 100vh;
+  width: 98.9vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-cnt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(131, 197, 190, 0.4);
+  filter: blur(4px);
+}/*# sourceMappingURL=Information_Task.css.map */

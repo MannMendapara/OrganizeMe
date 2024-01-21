@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"Information_Task.css"}
+{"version":3,"sources":["Information_Task.scss","Information_Task.css"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,UAAA;EACA,OAAA;EACA,aAAA;EACA,aAAA;EACA,aAAA;EACA,mBAAA;EACA,uBAAA;ACCJ;;ADEA;EACI,WAAA;EACA,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oCAAA;EACA,iBAAA;ACCJ","file":"Information_Task.css"}

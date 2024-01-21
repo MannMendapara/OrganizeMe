@@ -17,4 +17,9 @@
   width: 100%;
   margin: 15px 0;
   border: 1px solid #ddd; /* Adjust the border style as needed */
+}
+
+.search-task {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }/*# sourceMappingURL=Completed_Task.css.map */
