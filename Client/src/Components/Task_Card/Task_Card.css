@@ -29,6 +29,10 @@
   gap: 0.7rem;
 }
 
+.completed {
+  color: var(--bg);
+}
+
 .img-btn:hover {
   cursor: pointer;
 }

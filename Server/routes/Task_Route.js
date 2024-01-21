@@ -135,4 +135,35 @@ Task_router.put("/status/:id", async (req, res) => {
   }
 });
 
+//Display Specific Information
+
+// Task_router.get('info/:id',async(req,res)=>{
+//   const{id}=req.params;
+//   try {
+//     // Find the task by ID
+//     const task = await Task.findById(id);
+
+//     if (!task) {
+//       return res.status(404).json({ error: 'Task not found' });
+//     }
+
+//     // Extract the specific information you want to display
+//     const taskInfo = {
+//       title: task.Title,
+//       startDate: task.StartDate,
+//       endDate: task.EndDate,
+//       status: task.Status,
+//       taskDesc: task.TaskDesc,
+//       category: task.Category,
+//       priority: task.Priority,
+//     };
+
+//     res.status(200).json(taskInfo);
+//   } catch (error) {
+//     console.error('Error fetching task information:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
+
 export default Task_router;
