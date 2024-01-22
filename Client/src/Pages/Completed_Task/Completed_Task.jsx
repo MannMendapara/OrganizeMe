@@ -4,7 +4,8 @@ import Task_Card from "../../Components/Task_Card/Task_Card";
 import Searched_Tasks from "../Searched_Task/Searched_Tasks";
 import axios from "axios";
 
-const Completed_Task = () => {
+const Completed_Task = () => { 
+  const [allTask, setAlltask] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [inputVal, setInputVal] = useState("");
 
@@ -12,14 +13,14 @@ const Completed_Task = () => {
     axios
       .get("http://localhost:3000/")
       .then((response) => {
-        const allTask = response.data;
+        setAlltask(response.data)
         const completedTasks = allTask.filter((task) => task.Status === "Completed");
         setCompleted(completedTasks);
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
       });
-  }, []);
+  }, [allTask]);
 
   const searchTasks = () => {
     return completed.filter((task) =>
@@ -39,8 +40,8 @@ const Completed_Task = () => {
 
       <div className="complt-sort-task">
         <div className="priority">
-          <select type="text" name="Priority" className="sorting" id="by-priority">
-            <option value="default" disabled selected>
+          <select type="text" name="Priority" defaultValue="default" className="sorting" id="by-priority">
+            <option value="default" disabled>
               By Priority
             </option>
             <option value="Very Important">Very Important</option>

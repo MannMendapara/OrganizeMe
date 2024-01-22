@@ -8,7 +8,6 @@ const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
   const [alltask, setAlltask] = useState([]);
   const [inputval, setInputval] = useState('');
-  const [filteredTask, setFilteredTasks] = useState([]);
 
   const handleSidebar = () => {
     setSidebar(!sidebar);
@@ -22,10 +21,6 @@ const Navbar = () => {
     try {
       const response = await axios.get('http://localhost:3000/');
       setAlltask(response.data);
-      const searchedArray = response.data.filter((task) =>
-        task.Title.toLowerCase().includes(inputval.toLowerCase())
-      );
-      setFilteredTasks(searchedArray);
     } catch (e) {
       console.error(e);
     }
@@ -33,8 +28,15 @@ const Navbar = () => {
 
   useEffect(() => {
     getData();
-  }, [inputval, alltask]);
+  }, [alltask]);
 
+  const searchTasks = () => {
+    return alltask.filter((task) =>
+      task.Title.toLowerCase().includes(inputval.toLowerCase())
+    );
+  };
+
+  const searchedTasks = searchTasks();
 
 
   return (
@@ -61,7 +63,7 @@ const Navbar = () => {
         sidebar && <Sidebar handleSidebar={closeSidebar} />
       }
         {
-          (inputval) ? <div className='search-cnt'><Searched_Tasks data={filteredTask} /> </div>: ""
+          (inputval) ? <div className='search-cnt'><Searched_Tasks data={searchedTasks} /> </div>: ""
         }
     </>
   )
