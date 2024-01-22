@@ -1,8 +1,8 @@
 .info-cnt {
     position: absolute;
-    top: -15px;
+    top: -19px;
     left: 0;
-    height: 100vh;
+    height: 90vh;
     width: 98.9vw;
     display: flex;
     align-items: center;
@@ -18,4 +18,31 @@
     height: 100%;
     background: rgba(131, 197, 190, 0.4);
     filter: blur(4px);
+}
+
+.info-cont{
+    position: relative;
+    height: 600px;
+    width: 852px;
+    background: var(--bg);
+    padding: 1rem 3rem 3rem 5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.info-data-wrapper{
+display: flex;
+gap: 30px;
+flex-direction: column;
+}
+
+.classnameinfo-data lable{
+    color: var(--dark-bg);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.classnameinfo-data span{
+    font-weight: 700; 
 }
