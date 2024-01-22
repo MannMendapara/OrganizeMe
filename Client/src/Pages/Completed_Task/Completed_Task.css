@@ -1,5 +1,6 @@
 .completed-cnt {
   padding-top: 75px;
+  position: relative;
 }
 
 .complt-sort-task {

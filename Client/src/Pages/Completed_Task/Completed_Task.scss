@@ -1,12 +1,12 @@
 .completed-cnt {
     padding-top: 75px;
+    position: relative;
 }
 
 .complt-sort-task{
     display: flex;
     justify-content: space-around;
     gap:20%;
-
 }
 
 #by-priority{
