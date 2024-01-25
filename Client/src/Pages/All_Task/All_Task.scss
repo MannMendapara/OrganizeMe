@@ -30,4 +30,13 @@
     font-weight: 520;
     padding: 1px 0 0 2px;
 }
+
+.all-search input:focus {
+    outline: none;
+}
+
+.search-task {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
   

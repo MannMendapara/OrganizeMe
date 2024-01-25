@@ -2,21 +2,21 @@
   margin-top: 71px;
   padding-top: 1rem;
   display: flex;
+  position: relative;
 }
 
 .running-task-cnt {
   width: 800px;
-  position: relative;
   padding: 2rem;
 }
 
-.running-task-cnt::before {
+.home-cnt::before {
   content: "";
   background: var(--dark-bg);
   height: calc(100% - 8rem);
   position: absolute;
-  right: 0;
-  top: 3rem;
+  right: 50%;
+  top: 6rem;
   width: 2px;
   border-radius: 5px;
 }

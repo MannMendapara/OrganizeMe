@@ -26,6 +26,9 @@ const Searched_Tasks = ({ data }) => {
                         </div>
                     )
                 }
+                <div className='line-img'>
+                    <img src="../../../public/Images/line.png" alt="" />
+                </div>
             </div>
         </>
     )

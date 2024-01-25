@@ -8,34 +8,27 @@ const Running_Tasks = () => {
   const [panding, setPanding] = useState([]);
   const [allTask, setAllTask] = useState([]);
   const [inputVal, setInputVal] = useState("");
-  const [searchRunning, setSearchRunnning] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/")
+      .get("http://localhost:3000/running")
       .then((response) => {
-        setAllTask(response.data);
-        try {
-          let PandingTask = [];
-          allTask.forEach((item) => {
-            if (item.Status !== "Completed") {
-              PandingTask.push(item);
-            }
-          });
-          setPanding(PandingTask);
-          const SearchPandingTask = PandingTask.filter((task) =>
-            task.Title.toLowerCase().includes(inputVal.toLowerCase())
-          );
-
-          setSearchRunnning(SearchPandingTask);
-        } catch (e) {
-          console.error(e);
-        }
+        setAllTask(response.data)
+        const completedTasks = allTask.filter((task) => task.Status !== "Completed");
+        setPanding(completedTasks);
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
       });
-  }, [allTask, inputVal]);
+  }, [allTask]);
+
+  const searchTasks = () => {
+    return panding.filter((task) =>
+      task.Title.toLowerCase().includes(inputVal.toLowerCase())
+    );
+  };
+
+  const searchedTasks = searchTasks();
 
   return (
     <div className="running-cnt">
@@ -59,7 +52,7 @@ const Running_Tasks = () => {
               <option value="Monthly Task">Monthly Task</option>
             </select>
           </div>
-          
+
         </div>
         <div className="search">
           <input
@@ -71,10 +64,10 @@ const Running_Tasks = () => {
         </div>
       </div>
       <div className="serched-task-data">
-        {inputVal ? <Searched_Tasks data={searchRunning} /> : ""}
+        {inputVal ? <div className="search-task"><Searched_Tasks data={searchedTasks} /></div> : ""}
       </div>
       <div className="datacard-cnt">
-        {panding.map((item, i) => {
+        {!inputVal && panding.map((item, i) => {
           const startDate = new Date(item.StartDate);
           // Format the dates as "dd/mm/yyyy"
           const formattedStartDate = startDate.toLocaleDateString("en-GB");
