@@ -11,7 +11,7 @@ const Completed_Task = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/")
+      .get("http://localhost:3000/completed")
       .then((response) => {
         setAlltask(response.data)
         const completedTasks = allTask.filter((task) => task.Status === "Completed");

@@ -41,7 +41,6 @@ const All_Task = () => {
         case 'Completed':
           return a.Status.localeCompare(b.Status);
         default:
-          // Default sorting (by start date, you can change it to another criteria)
           return new Date(a.StartDate) - new Date(b.StartDate);
       }
     });

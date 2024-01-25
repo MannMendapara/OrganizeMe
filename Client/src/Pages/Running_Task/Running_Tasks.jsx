@@ -11,7 +11,7 @@ const Running_Tasks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/")
+      .get("http://localhost:3000/running")
       .then((response) => {
         setAllTask(response.data)
         const completedTasks = allTask.filter((task) => task.Status !== "Completed");
@@ -67,7 +67,7 @@ const Running_Tasks = () => {
         {inputVal ? <div className="search-task"><Searched_Tasks data={searchedTasks} /></div> : ""}
       </div>
       <div className="datacard-cnt">
-        {panding.map((item, i) => {
+        {!inputVal && panding.map((item, i) => {
           const startDate = new Date(item.StartDate);
           // Format the dates as "dd/mm/yyyy"
           const formattedStartDate = startDate.toLocaleDateString("en-GB");

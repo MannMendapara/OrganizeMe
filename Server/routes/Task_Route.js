@@ -15,6 +15,26 @@ Task_router.get("/", async (req, res) => {
   }
 });
 
+Task_router.get('/completed', async (req,res) => {
+  try {
+    const data = await Task.find({Status:"Completed"})
+    res.status(200).json(data);
+  }catch(error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
+
+Task_router.get('/running', async (req,res) => {
+  try {
+    const data = await Task.find({ Status: { $ne: "Completed" } })
+    res.status(200).json(data);
+  }catch(error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
+
 //Get Element by Id
 Task_router.get("/:id", async (req, res) => {
   const { id } = req.params;
