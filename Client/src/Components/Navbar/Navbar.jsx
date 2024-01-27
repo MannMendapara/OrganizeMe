@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/');
+      const response = await axios.get('http://localhost:3000/user/');
       setAlltask(response.data);
     } catch (e) {
       console.error(e);
@@ -44,17 +44,17 @@ const Navbar = () => {
       <nav className='nav'>
         <div className='container'>
           <div className="ham-btn" onClick={handleSidebar}>
-            <img src={!sidebar ? "./Images/Hambar.png" : "./Images/Cross.png"} alt="Icon" />
+            <img src={!sidebar ? "/Images/Hambar.png" : "./Images/Cross.png"} alt="Icon" />
           </div>
           <div className='search-bar'>
             <input type="text" placeholder='Search' value={inputval} onChange={e => setInputval(e.target.value)} />
-            <img src="./Images/Search.png" alt="Icon" className='search-img' />
+            <img src="/Images/Search.png" alt="Icon" className='search-img' />
           </div>
           <div className='links'>
             <ul>
-              <li><img src="./Images/Bell.png" alt="Icon" /></li>
-              <li><img src="./Images/Moon.png" alt="Icon" /></li>
-              <li><img src="./Images/User.png" alt="Icon" /></li>
+              <li><img src="/Images/Bell.png" alt="Icon" /></li>
+              <li><img src="/Images/Moon.png" alt="Icon" /></li>
+              <li><img src="/Images/User.png" alt="Icon" /></li>
             </ul>
           </div>
         </div>

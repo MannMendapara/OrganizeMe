@@ -1,11 +1,11 @@
 import express from "express";
 import Task from "../models/Task_Model.js";
 import mongoose from "mongoose";
-
+import auth from "../Middleware/auth.js";
 const Task_router = express.Router();
 
 //Fetched all the tasks from database
-Task_router.get("/", async (req, res) => {
+Task_router.get("/",auth, async (req, res) => {
   try {
     const data = await Task.find({});
     res.status(200).json(data);
@@ -15,7 +15,7 @@ Task_router.get("/", async (req, res) => {
   }
 });
 
-Task_router.get('/completed', async (req,res) => {
+Task_router.get('/completed',auth, async (req,res) => {
   try {
     const data = await Task.find({Status:"Completed"})
     res.status(200).json(data);
@@ -25,7 +25,7 @@ Task_router.get('/completed', async (req,res) => {
   }
 })
 
-Task_router.get('/running', async (req,res) => {
+Task_router.get('/running',auth, async (req,res) => {
   try {
     const data = await Task.find({ Status: { $ne: "Completed" } })
     res.status(200).json(data);
@@ -36,7 +36,7 @@ Task_router.get('/running', async (req,res) => {
 })
 
 //Get Element by Id
-Task_router.get("/:id", async (req, res) => {
+Task_router.get("/:id",auth, async (req, res) => {
   const { id } = req.params;
   try {
     const data = await Task.findById(id);
@@ -51,7 +51,7 @@ Task_router.get("/:id", async (req, res) => {
 });
 
 // Add the task to database
-Task_router.post("/add", async (req, res) => {
+Task_router.post("/add",auth, async (req, res) => {
   try {
     const { Title, EndDate, Priority, Category, TaskDesc } = req.body;
     const StartDate = new Date();
@@ -80,7 +80,7 @@ Task_router.post("/add", async (req, res) => {
 });
 
 // Update the task in database
-Task_router.put("/update/:id", async (req, res) => {
+Task_router.put("/update/:id",auth, async (req, res) => {
   try {
     const { id } = req.params;
     const { Title, EndDate, Priority, Category, TaskDesc } = req.body;
@@ -111,7 +111,7 @@ Task_router.put("/update/:id", async (req, res) => {
 });
 
 // delete the task
-Task_router.delete("/delete/:id", async (req, res) => {
+Task_router.delete("/delete/:id",auth, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -135,7 +135,7 @@ Task_router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-Task_router.put("/status/:id", async (req, res) => {
+Task_router.put("/status/:id",auth, async (req, res) => {
   const { id } = req.params;
   try {
     // Find the task by ID
@@ -154,36 +154,6 @@ Task_router.put("/status/:id", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-
-//Display Specific Information
-
-// Task_router.get('info/:id',async(req,res)=>{
-//   const{id}=req.params;
-//   try {
-//     // Find the task by ID
-//     const task = await Task.findById(id);
-
-//     if (!task) {
-//       return res.status(404).json({ error: 'Task not found' });
-//     }
-
-//     // Extract the specific information you want to display
-//     const taskInfo = {
-//       title: task.Title,
-//       startDate: task.StartDate,
-//       endDate: task.EndDate,
-//       status: task.Status,
-//       taskDesc: task.TaskDesc,
-//       category: task.Category,
-//       priority: task.Priority,
-//     };
-
-//     res.status(200).json(taskInfo);
-//   } catch (error) {
-//     console.error('Error fetching task information:', error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });
 
 
 export default Task_router;

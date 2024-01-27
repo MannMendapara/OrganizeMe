@@ -13,7 +13,7 @@ const All_Task = () => {
   // useEffect
   useEffect(() => {
     axios
-      .get("http://localhost:3000/")
+      .get("http://localhost:3000/user")
       .then((response) => {
         // Set the tasks initially
         setTasks(response.data);

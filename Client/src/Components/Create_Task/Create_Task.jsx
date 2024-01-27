@@ -35,14 +35,14 @@ const Create_Task = () => {
 
     try {
       // Send the form data to the server
-      await axios.post('http://localhost:3000/add', {
+      await axios.post('http://localhost:3000/user/add', {
         Title: taskTitle,
         EndDate: endDate,
         Priority: priority,
         Category: category,
         TaskDesc: taskDesc,
       }).then(() => {
-        Navigate('/')
+        Navigate('/user')
       });
     } catch (error) {
       console.error("Error adding task:", error);

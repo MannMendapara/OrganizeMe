@@ -1,8 +1,11 @@
-import express from "express";
-import dotenv from "dotenv";
+import express from "express"
+import dotenv from "dotenv"
 import cors from 'cors'
 import mongoose from "mongoose";
 import Task_router from "./routes/Task_Route.js";
+import User_Router from './routes/user.js'
+import Auth_Router from "./routes/Auth.js";
+import auth from "./Middleware/auth.js";
 
 const app = express();
 dotenv.config();
@@ -24,7 +27,9 @@ mongoose
 app.use(express.json());
 app.use(cors());
 
-app.use(Task_router);
+app.use('/', User_Router);
+app.use('/auth', Auth_Router);
+app.use('/user', Task_router);
 
 // Server
 app.listen(PORT, () => {

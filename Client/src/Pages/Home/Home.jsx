@@ -14,19 +14,19 @@ const Home = () => {
   const Navigate = useNavigate()
 
   const handleAllRunning = () => {
-    Navigate('/running');
+    Navigate('/user/running');
   }
 
   const handleAllCompleted = () => {
-    Navigate('/completed')
+    Navigate('/user/completed')
   }
 
   const handleAddTask = () => {
-    Navigate('/add-task')
+    Navigate('/user/add-task')
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/')
+    axios.get('http://localhost:3000/user/')
       .then(response => {
         setAllTask(response.data);
         try {
@@ -58,7 +58,7 @@ const Home = () => {
           <div className='running-task-cnt'>
             <div className='main-title'>
               <p>Running Task</p>
-              <img src="./Images/line.png" alt="Line" />
+              <img src="/Images/line.png" alt="Line" />
             </div>
             <div className='datacard-cnt'>
               {
@@ -84,7 +84,7 @@ const Home = () => {
           <div className='completed-task-cnt'>
             <div className='main-title'>
               <p>Completed Task</p>
-              <img src="./Images/line.png" alt="Line" />
+              <img src="/Images/line.png" alt="Line" />
             </div>
             <div className='datacard-cnt'>
               {

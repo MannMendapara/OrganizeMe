@@ -39,7 +39,7 @@
   margin-right: 2rem;
 }
 
-input {
+.input {
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -48,11 +48,11 @@ input {
   background-color: transparent;
 }
 
-input:focus {
+.input:focus {
   outline: none;
 }
 
-button {
+.sub-btn {
   padding: 10px;
   box-sizing: border-box;
   background-color: var(--dark-bg);

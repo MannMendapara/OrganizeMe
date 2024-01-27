@@ -11,7 +11,7 @@ const Running_Tasks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/running")
+      .get("http://localhost:3000/user/running")
       .then((response) => {
         setAllTask(response.data)
         const completedTasks = allTask.filter((task) => task.Status !== "Completed");
@@ -60,7 +60,7 @@ const Running_Tasks = () => {
             placeholder="Search"
             onChange={(e) => setInputVal(e.target.value)}
           />
-          <img src="./Images/Search.png" alt="Icon" />
+          <img src="/Images/Search.png" alt="Icon" />
         </div>
       </div>
       <div className="serched-task-data">

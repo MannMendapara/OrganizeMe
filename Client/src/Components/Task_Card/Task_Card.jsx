@@ -22,7 +22,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
 
   // Function for delete task
   const handleDelete = async () => {
-    const res = await axios.delete(`http://localhost:3000/delete/${id}`);
+    const res = await axios.delete(`http://localhost:3000/user/delete/${id}`);
     if (!res) {
       console.error("Error");
     }
@@ -42,7 +42,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
   useEffect(() => {
     const updateStatus = async () => {
       try {
-        const response = await axios.put(`http://localhost:3000/status/${id}`);
+        const response = await axios.put(`http://localhost:3000/user/status/${id}`);
         if (!response) {
           console.error("Error");
         }
@@ -68,25 +68,20 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
               <div className="completed">Completed</div>
             ) : (
               <div className="complete des">
-                <input
-                  type="checkbox"
-                  checked={Checked}
-                  onChange={() => setChecked(true)}
-                />{" "}
-                Mark as Complete
+                <input type="checkbox" checked={Checked} onChange={() => setChecked(true)} /> Mark as Complete
               </div>
             )}
           </div>
           <div className="card-icons">
             <img
-              src="./Images/icon.png"
+              src="/Images/icon.png"
               className="img-btn"
               alt="Info"
               onClick={handleInfo}
             />
             {Status !== "Completed" ? (
               <img
-                src="./Images/write.png"
+                src="/Images/write.png"
                 className="img-btn"
                 alt="Edit"
                 onClick={handleEditClick}
@@ -95,7 +90,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
               ""
             )}
             <img
-              src="./Images/delete.png"
+              src="/Images/delete.png"
               className="img-btn"
               alt="Delete"
               onClick={handleDelete}
