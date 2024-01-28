@@ -8,6 +8,7 @@ const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
   const [alltask, setAlltask] = useState([]);
   const [inputval, setInputval] = useState('');
+  const [profile, setProfile] = useState(false);
 
   const handleSidebar = () => {
     setSidebar(!sidebar);
@@ -16,6 +17,10 @@ const Navbar = () => {
   const closeSidebar = () => {
     setSidebar(false);
   };
+
+  const handleProfile = () => [
+    setProfile(!profile)
+  ]
 
   const getData = async () => {
     try {
@@ -54,7 +59,14 @@ const Navbar = () => {
             <ul>
               <li><img src="/Images/Bell.png" alt="Icon" /></li>
               <li><img src="/Images/Moon.png" alt="Icon" /></li>
-              <li><img src="/Images/User.png" alt="Icon" /></li>
+              <li className='profile-section'><img src="/Images/User.png" alt="Icon" onClick={handleProfile} />
+                {
+                  profile &&
+                  <div className='profile-cnt'>
+
+                  </div>
+                }
+              </li>
             </ul>
           </div>
         </div>
@@ -62,9 +74,9 @@ const Navbar = () => {
       {
         sidebar && <Sidebar handleSidebar={closeSidebar} />
       }
-        {
-          (inputval) ? <div className='search-cnt'><Searched_Tasks data={searchedTasks} /> </div>: ""
-        }
+      {
+        (inputval) ? <div className='search-cnt'><Searched_Tasks data={searchedTasks} /> </div> : ""
+      }
     </>
   )
 }

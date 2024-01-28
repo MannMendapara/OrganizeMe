@@ -15,6 +15,7 @@ User_Router.post(
     "Please enter a password with minimum of 6 characters"
   ).isLength({ min: 6 }),
   async (req, res) => {
+    console.log("Trying to register");
     const errors = validationResult(req);
     console.error(errors);
 
@@ -38,8 +39,11 @@ User_Router.post(
 
       const salt = await bcrypt.genSalt();
       user.password = await bcrypt.hash(password, salt);
+
+      console.log("User Save Success");
       await user.save();
 
+      console.log("Trying to generate token")
       const payload = {
         user: {
           id: user.id,
@@ -51,6 +55,7 @@ User_Router.post(
         { expiresIn: 360000 }, // Change to 3600 during production
         (err, token) => {
           if (err) throw err;
+          console.log("token generate success", token);
           res.json({ token });
         }
       );

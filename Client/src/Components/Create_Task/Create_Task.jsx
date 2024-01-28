@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Create_Task.css";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode';
 
 const Create_Task = () => {
 
@@ -13,6 +14,7 @@ const Create_Task = () => {
   const [priority, setPriority] = useState('');
   const [category, setCategory] = useState('');
   const [taskDesc, setTaskDesc] = useState('');
+  const [userID, setUserID] = useState('');
 
   //Functions
   const handleSubmit = async (e) => {
@@ -36,6 +38,7 @@ const Create_Task = () => {
     try {
       // Send the form data to the server
       await axios.post('http://localhost:3000/user/add', {
+        UserId: userID,
         Title: taskTitle,
         EndDate: endDate,
         Priority: priority,
@@ -48,6 +51,21 @@ const Create_Task = () => {
       console.error("Error adding task:", error);
     }
   };
+
+  useEffect(() => {
+    // Get the token from localStorage
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        // Decode the token to get the user ID
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.user.id;
+        setUserID(userId);
+      } catch (error) {
+        console.error('Error decoding token:', error);
+      }
+    }
+  }, []);
 
   return (
     <div className="Create-task-container">

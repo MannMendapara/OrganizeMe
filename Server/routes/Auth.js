@@ -51,6 +51,7 @@ Auth_Router.post(
           .status(400)
           .json({ errors: [{ msg: "Invalid Crendentials" }] });
       }
+
       const payload = {
         user: {
           id: user.id,
@@ -63,7 +64,7 @@ Auth_Router.post(
         { expiresIn: 360000 }, // Change to 3600 during production
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ token, userId: user.id });
         }
       );
     } catch (err) {
