@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 const TaskSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user', // Reference to the User model
+        required: true,
+      },
     Title: {
         type: String, 
         required: true,

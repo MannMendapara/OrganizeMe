@@ -7,7 +7,8 @@ const Task_router = express.Router();
 //Fetched all the tasks from database
 Task_router.get("/",auth, async (req, res) => {
   try {
-    const data = await Task.find({});
+    const userId = req.user.id;
+    const data = await Task.find({ userId });
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -51,19 +52,20 @@ Task_router.get("/:id",auth, async (req, res) => {
 });
 
 // Add the task to database
-Task_router.post("/add",auth, async (req, res) => {
+Task_router.post("/add", auth, async (req, res) => {
   try {
     const { Title, EndDate, Priority, Category, TaskDesc } = req.body;
     const StartDate = new Date();
+    const userId = req.user.id; // Get the user ID from the authenticated user
 
     // Check For Empty field
     if (!Title || !EndDate || !TaskDesc || !Category || !Priority) {
-      return res
-        .status(400)
-        .json({ error: "Please provide all required fields" });
+      return res.status(400).json({ error: "Please provide all required fields" });
     }
-    //NewTask
+
+    // New Task with userId
     const newTask = await Task.create({
+      userId,
       Title,
       StartDate,
       EndDate,
@@ -72,6 +74,7 @@ Task_router.post("/add",auth, async (req, res) => {
       Category,
       Priority,
     });
+
     res.status(201).json(newTask);
   } catch (error) {
     console.error("Error adding task:", error);

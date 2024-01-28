@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Searched_Tasks from '../../Pages/Searched_Task/Searched_Tasks'
 
+
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
   const [alltask, setAlltask] = useState([]);
@@ -35,9 +36,8 @@ const Navbar = () => {
       task.Title.toLowerCase().includes(inputval.toLowerCase())
     );
   };
-
   const searchedTasks = searchTasks();
-
+ 
 
   return (
     <>
@@ -55,6 +55,8 @@ const Navbar = () => {
               <li><img src="/Images/Bell.png" alt="Icon" /></li>
               <li><img src="/Images/Moon.png" alt="Icon" /></li>
               <li><img src="/Images/User.png" alt="Icon" /></li>
+             
+
             </ul>
           </div>
         </div>
