@@ -58,6 +58,20 @@
   padding-top: 110px;
 }
 
+.profile-section {
+  position: relative;
+}
+
+.profile-cnt {
+  position: relative;
+  top: 69px;
+  right: -10px;
+  width: 300px;
+  height: 100px;
+  background-color: red;
+  z-index: 2;
+}
+
 @media screen and (max-width: 665px) {
   .links ul {
     gap: 15px;
