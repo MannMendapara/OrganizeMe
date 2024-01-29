@@ -1,5 +1,6 @@
 import express from "express";
 import Task from "../models/Task_Model.js";
+import User from "../models/User.js";
 import mongoose from "mongoose";
 import auth from "../Middleware/auth.js";
 const Task_router = express.Router();
@@ -168,5 +169,19 @@ Task_router.put("/status/:id", auth, async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+Task_router.get("/profile/:id",auth,async(req,res)=>{
+  const { id } = req.params;
+  try {
+    const data = await Task.findById(id);
+    if (!data) {
+      return res.status(404).json({ error: "Task not found" });
+    }
+    res.status(200).json(data);
+  } catch (e) {
+    console.error("Error fetching data:", e);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
 
 export default Task_router;

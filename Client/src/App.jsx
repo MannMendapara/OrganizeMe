@@ -29,7 +29,7 @@ function App() {
           console.error('Token validation error:', error);
         });
     }
-  })
+  },[])
 
   return (
     <>
