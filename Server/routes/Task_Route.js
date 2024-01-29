@@ -1,5 +1,6 @@
 import express from "express";
 import Task from "../models/Task_Model.js";
+import User from "../models/User.js";
 import mongoose from "mongoose";
 import auth from "../Middleware/auth.js";
 const Task_router = express.Router();
@@ -67,14 +68,14 @@ Task_router.post("/add", auth, async (req, res) => {
   try {
     const { UserId, Title, EndDate, Priority, Category, TaskDesc } = req.body;
     const StartDate = new Date();
+    const userId = req.user.id; // Get the user ID from the authenticated user
 
     // Check For Empty field
     if (!Title || !EndDate || !TaskDesc || !Category || !Priority) {
-      return res
-        .status(400)
-        .json({ error: "Please provide all required fields" });
+      return res.status(400).json({ error: "Please provide all required fields" });
     }
-    //NewTask
+
+    // New Task with userId
     const newTask = await Task.create({
       UserId,
       Title,
@@ -85,6 +86,7 @@ Task_router.post("/add", auth, async (req, res) => {
       Category,
       Priority,
     });
+
     res.status(201).json(newTask);
   } catch (error) {
     console.error("Error adding task:", error);
@@ -167,5 +169,19 @@ Task_router.put("/status/:id", auth, async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+Task_router.get("/profile/:id",auth,async(req,res)=>{
+  const { id } = req.params;
+  try {
+    const data = await Task.findById(id);
+    if (!data) {
+      return res.status(404).json({ error: "Task not found" });
+    }
+    res.status(200).json(data);
+  } catch (e) {
+    console.error("Error fetching data:", e);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
 
 export default Task_router;

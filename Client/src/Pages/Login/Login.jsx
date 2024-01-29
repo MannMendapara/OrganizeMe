@@ -15,13 +15,14 @@ const Login = () => {
     if (storedToken) {
       // Set the token in Axios default headers
       axios.defaults.headers.common['Authorization'] = storedToken;
+
       // Optionally, you can make an initial request to validate the token
       // and get the user details if needed.
       // Example:
       axios.get('http://localhost:3000/auth/login')
         .then(response => {
           if (response) {
-            navigate('/user/')
+            navigate('/user')
           }
         })
         .catch(error => {
