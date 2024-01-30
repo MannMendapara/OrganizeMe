@@ -11,7 +11,7 @@ const Home = () => {
   const [panding, setPanding] = useState([]);
   const [allTask, setAllTask] = useState([]);
   const [loading, setloading] = useState(true);
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
 
   const handleAllRunning = () => {
     Navigate('/user/running');
@@ -28,28 +28,23 @@ const Home = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/user/')
       .then(response => {
-        setAllTask(response.data);
-        try {
-          let completedTask = [];
-          let PandingTask = [];
-          allTask.forEach((item) => {
-            if (item.Status === "Completed" && completedTask.length <= 5) {
-              completedTask.push(item);
-            } else if (PandingTask.length <= 5) {
-              PandingTask.push(item);
-            }
-          })
-          setCompleted(completedTask);
-          setPanding(PandingTask);
-          setloading(false);
-        } catch (e) {
-          console.error(e);
-        }
+        // Assuming response.data is an array of tasks
+        const tasks = response.data;
+
+        // Filter and set completed and pending tasks
+        const completedTasks = tasks.filter(item => item.Status === "Completed").slice(0, 5);
+        const pendingTasks = tasks.filter(item => item.Status !== "Completed").slice(0, 5);
+
+        setCompleted(completedTasks);
+        setPanding(pendingTasks);
+        setAllTask(tasks); // Set all tasks once after filtering completed and pending tasks
+        setloading(false);
       })
       .catch(error => {
         console.error('Error fetching tasks:', error);
       });
-  }, [allTask])
+  }, [allTask]);
+
 
   return (
     <>

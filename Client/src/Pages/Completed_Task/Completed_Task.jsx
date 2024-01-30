@@ -56,7 +56,7 @@ const Completed_Task = () => {
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
           />
-          <img src="./Images/Search.png" alt="Icon" />
+          <img src="/Images/Search.png" alt="Icon" />
         </div>
       </div>
       <div className="serched-task-data">

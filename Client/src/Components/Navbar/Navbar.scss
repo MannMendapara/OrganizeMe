@@ -62,15 +62,49 @@
     position: relative;
 }
 
+.profile-section:hover {
+    cursor: pointer;
+}
+
 .profile-cnt {
     position: absolute;
+    min-width: 1rem;
     top: 53px;
-    right: -50px;
-    width: 250px;
-    height: 300px;
+    right: -40px;
     background-color: var(--dark-bg);
     z-index: 2;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3rem;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+.profile-email {
+    font-size: 1rem;
+    color: var(--bg);
+}
+
+.logout-btn {
+    margin-top: 1rem;
+    padding: 7px;
+    width: 80px;
+    border-radius: 5px;
+    font-size: .8rem;
+    color: var(--dark-bg);
+    font-weight: 600;
+    background-color: var(--bg);
+}
+
+.logout-btn:hover {
+    cursor: pointer;
+    letter-spacing: 1.2px;
 }
 
 @media screen and (max-width:665px){
@@ -80,7 +114,6 @@
   .search-bar{
     gap:30px;
   }
-
     .container{
         padding: 0 2rem 0 2rem;
     }
