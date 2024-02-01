@@ -12,7 +12,7 @@ const Running_Tasks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/user/running")
+      .get("https://advance-toodoo.onrender.com/user/running")
       .then((response) => {
         setAllTask(response.data);
         const completedTasks = allTask.filter((task) => task.Status !== "Completed");

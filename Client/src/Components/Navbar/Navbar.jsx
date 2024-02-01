@@ -29,7 +29,7 @@ const Navbar = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/user/');
+      const response = await axios.get('https://advance-toodoo.onrender.com/user/');
       setAlltask(response.data);
     } catch (e) {
       console.error(e);
@@ -45,7 +45,7 @@ const Navbar = () => {
           const decodedToken = jwtDecode(token);
           const userId = decodedToken.user.id;
           // Fetch user data using the obtained user ID
-          const response = await axios.get(`http://localhost:3000/user/profile/${userId}`);
+          const response = await axios.get(`https://advance-toodoo.onrender.com/user/profile/${userId}`);
           if (response) {
             setName(response.data.name);
             setEmail(response.data.email);

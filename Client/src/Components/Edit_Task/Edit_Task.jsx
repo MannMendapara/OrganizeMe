@@ -32,7 +32,7 @@ const Edit_Task = ({ taskId, Editing }) => {
             return;
         }
         try {
-            axios.put(`http://localhost:3000/user/update/${taskId}`, {
+            axios.put(`https://advance-toodoo.onrender.com/user/update/${taskId}`, {
                 Title: Title ? Title : taskData.Title,
                 EndDate: EndDate ? EndDate : taskData.EndDate,
                 Priority: Priority ? Priority : taskData.Priority,
@@ -50,7 +50,7 @@ const Edit_Task = ({ taskId, Editing }) => {
 
     const handleMarkAsComplete = async () => {
         try {
-            const response = await axios.put(`http://localhost:3000/user/status/${taskId}`);
+            const response = await axios.put(`https://advance-toodoo.onrender.com/user/status/${taskId}`);
             if (!response) {
                 console.error("Error");
             }
@@ -61,7 +61,7 @@ const Edit_Task = ({ taskId, Editing }) => {
     }
 
     const handleDeleteTask = async () => {
-        const res = await axios.delete(`http://localhost:3000/user/delete/${taskId}`);
+        const res = await axios.delete(`https://advance-toodoo.onrender.com/user/delete/${taskId}`);
         if (!res) {
             console.error("Error")
         }
@@ -76,7 +76,7 @@ const Edit_Task = ({ taskId, Editing }) => {
                     return;
                 }
                 // Make an API call to fetch the task data by ID
-                const response = await axios.get(`http://localhost:3000/user/${taskId}`);
+                const response = await axios.get(`https://advance-toodoo.onrender.com/user/${taskId}`);
                 setTaskData(response.data);
             } catch (error) {
                 console.error('Error fetching task data:', error);

@@ -26,7 +26,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/user/')
+    axios.get('https://advance-toodoo.onrender.com/user/')
       .then(response => {
         // Assuming response.data is an array of tasks
         const tasks = response.data;

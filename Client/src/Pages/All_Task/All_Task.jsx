@@ -13,7 +13,7 @@ const All_Task = () => {
   // useEffect
   useEffect(() => {
     axios
-      .get("http://localhost:3000/user")
+      .get("https://advance-toodoo.onrender.com/user")
       .then((response) => {
         // Set the tasks initially
         setTasks(response.data);

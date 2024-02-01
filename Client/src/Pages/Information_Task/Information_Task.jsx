@@ -7,7 +7,7 @@ const Information_Task = ({ taskId, CloseInformation }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/user/${taskId}`)
+      .get(`https://advance-toodoo.onrender.com/user/${taskId}`)
       .then((response) => {
         setData(response.data);
       })

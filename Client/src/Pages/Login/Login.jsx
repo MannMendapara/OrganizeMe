@@ -20,7 +20,7 @@ const Login = () => {
       // Optionally, you can make an initial request to validate the token
       // and get the user details if needed.
       // Example:
-      const response = await axios.get('http://localhost:3000/auth/login');
+      const response = await axios.get('https://advance-toodoo.onrender.com/auth/login');
       if (response) {
         window.location.href = '/user'
       }
@@ -30,7 +30,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
+      const response = await axios.post('https://advance-toodoo.onrender.com/auth/login', {
         email,
         password,
       });
