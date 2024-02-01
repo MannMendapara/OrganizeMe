@@ -37,17 +37,17 @@ function App() {
         isLoggedIn ? (<BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path='/user' element={<Home />} />
-            <Route path='/user/running' element={<Running_Tasks />} />
-            <Route path='/user/completed' element={<Completed_Task />} />
-            <Route path='/user/add-task' element={<Create_Task />} />
-            <Route path='/user/all-task' element={<All_Task />} />
+            <Route path='https://toodoo-one.vercel.app/user' element={<Home />} />
+            <Route path='https://toodoo-one.vercel.app/user/running' element={<Running_Tasks />} />
+            <Route path='https://toodoo-one.vercel.app/user/completed' element={<Completed_Task />} />
+            <Route path='https://toodoo-one.vercel.app/user/add-task' element={<Create_Task />} />
+            <Route path='https://toodoo-one.vercel.app/user/all-task' element={<All_Task />} />
           </Routes>
         </BrowserRouter>) : (
           <BrowserRouter>
             <Routes>
-              <Route path='/' element={<Login />} />
-              <Route path='/reg' element={<Register />} />
+              <Route path='https://toodoo-one.vercel.app/' element={<Login />} />
+              <Route path='https://toodoo-one.vercel.app/reg' element={<Register />} />
             </Routes>
           </BrowserRouter>
         )
