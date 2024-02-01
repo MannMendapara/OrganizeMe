@@ -32,8 +32,8 @@ const Home = () => {
         const tasks = response.data;
 
         // Filter and set completed and pending tasks
-        const completedTasks = tasks.filter(item => item.Status === "Completed").slice(0, 5);
-        const pendingTasks = tasks.filter(item => item.Status !== "Completed").slice(0, 5);
+        const completedTasks = tasks.filter(item => item.Status === "Completed").slice(0, 6);
+        const pendingTasks = tasks.filter(item => item.Status !== "Completed").slice(0, 6);
 
         setCompleted(completedTasks);
         setPanding(pendingTasks);

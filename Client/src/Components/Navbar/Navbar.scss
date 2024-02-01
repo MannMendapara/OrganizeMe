@@ -110,6 +110,17 @@
     letter-spacing: 1.2px;
 }
 
+ul li {
+    height: 36px;
+    width: 36px;
+}
+
+ul li img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 @media screen and (max-width:665px){
     .links ul {
         gap: 15px;

@@ -46,7 +46,7 @@ function App() {
         </BrowserRouter>) : (
           <BrowserRouter>
             <Routes>
-              <Route path='/auth/login' element={<Login />} />
+              <Route path='/' element={<Login />} />
               <Route path='/reg' element={<Register />} />
             </Routes>
           </BrowserRouter>

@@ -65,7 +65,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     delete axios.defaults.headers.common['Authorization'];
-    window.location.href = '/auth/login';
+    window.location.href = '/';
   };
 
   useEffect(() => {
@@ -95,8 +95,6 @@ const Navbar = () => {
           </div>
           <div className='links'>
             <ul>
-              <li><img src="/Images/Bell.png" className='nav-img' alt="Icon" /></li>
-              <li><img src="/Images/Moon.png" className='nav-img' alt="Icon" /></li>
               <li className='profile-section'><img src="/Images/User.png" className='nav-img' alt="Icon" onClick={handleProfile} />
                 {
                   profile &&
