@@ -60,7 +60,7 @@ Auth_Router.post(
 
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        process.env.jwtSecret,
         { expiresIn: 360000 }, // Change to 3600 during production
         (err, token) => {
           if (err) throw err;
