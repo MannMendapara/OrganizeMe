@@ -62,8 +62,8 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
         <div className="card">
           <div className="data">
             <div className="des">{Title}</div>
-            <div className="start-date des">{Start}</div>
-            {End && <div className="end-date des">{End}</div>}
+            <div className="start-date des"><span>StartDate:</span> {Start}</div>
+            {End && <div className="end-date des"><span>EndDate:</span> {End}</div>}
             {Status === "Completed" ? (
               <div className="completed">Completed</div>
             ) : (

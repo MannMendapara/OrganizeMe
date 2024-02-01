@@ -47,9 +47,8 @@ const Navbar = () => {
           // Fetch user data using the obtained user ID
           const response = await axios.get(`http://localhost:3000/user/profile/${userId}`);
           if (response) {
-            const data = response.data;
-            setName(data.name);
-            setEmail(data.email);
+            setName(response.data.name);
+            setEmail(response.data.email);
           }
         } catch (error) {
           console.error('Error decoding token:', error);
@@ -58,6 +57,7 @@ const Navbar = () => {
       }
     } catch (e) {
       console.error(e);
+      window.location.href = '/auth/login';
     }
   }
 
@@ -90,7 +90,7 @@ const Navbar = () => {
             <img src={!sidebar ? "/Images/Hambar.png" : "/Images/Cross.png"} alt="Icon" />
           </div>
           <div className='search-bar'>
-            <input type="text" placeholder='Search' value={inputval} onChange={e => {setInputval(e.target.value)}} />
+            <input type="text" placeholder='Search' value={inputval} onChange={e => { setInputval(e.target.value) }} />
             <img src="/Images/Search.png" alt="Icon" className='search-img' />
           </div>
           <div className='links'>

@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 const Sidebar = ({ handleSidebar }) => {
   return (
     <div className="sidebar">
-      <div className="dashboard">
+      <div className="dashboard sidebar-link">
         <img src="/Images/dashboard.png" alt="Icon" />
         <Link to="/user" onClick={handleSidebar}>Dashboard</Link>
       </div>
-      <div className="all-task">
+      <div className="all-task sidebar-link">
         <img src="/Images/alltask.png" alt="Icon" />
         <Link to="/user/all-task" onClick={handleSidebar}>All Task</Link>
       </div>
-      <div className="cmplt-task">
+      <div className="cmplt-task sidebar-link">
         <img src="/Images/cmp-task.png" alt="Icon" />
         <Link to="/user/completed" onClick={handleSidebar}>Completed Task</Link>
       </div>
-      <div className="add-task">
+      <div className="add-task sidebar-link">
         <img src="/Images/addtask.png" alt="Icon" />
         <Link to="/user/add-task" onClick={handleSidebar}>Add Task</Link>
       </div>

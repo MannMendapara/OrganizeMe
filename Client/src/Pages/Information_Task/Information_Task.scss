@@ -26,9 +26,11 @@
     background: var(--bg);
     padding: 1rem 3rem 3rem 5rem;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     margin-top: 70px;
+    gap: 2.5rem;
 }
 
 .info-data-wrapper{
@@ -45,4 +47,13 @@ flex-direction: column;
 
 .classnameinfo-data span{
     font-weight: 700; 
+}
+
+.info-task-title {
+    text-align: center;
+    margin-top: .6rem;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dark-bg);
 }
