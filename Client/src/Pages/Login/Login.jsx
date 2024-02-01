@@ -75,7 +75,7 @@ const Login = () => {
         </form>
         <div className="">
           <p className="text-pera">
-            Don't Have An Acoount{" "}
+            Do not have An Account{" "}
             <Link className="link" to="/reg">
               Register
             </Link>{" "}
