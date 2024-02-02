@@ -25,7 +25,7 @@ const Register = () => {
         const { token } = response.data;
         // Store the token in localStorage or sessionStorage
         localStorage.setItem('token', token);
-        window.location.href = 'auth/login'
+        window.location.href = '/'
       }).catch(e => {
         console.error(e);
       })
@@ -57,7 +57,7 @@ const Register = () => {
       <div className="">
         <p className="text-pera">
           Already Have  An Acoount{" "}
-          <Link className="link" to="/auth/login">
+          <Link className="link" to="/">
             Login
           </Link>{" "}
           Here
