@@ -57,7 +57,7 @@ const Login = () => {
             </label>
             <input type="email" placeholder="Enter Your Email" id="email" className="input" onChange={e => setemail(e.target.value)} />
           </div>
-          <div className="password-cnt">
+          <div className="password-cnt">  
             <label htmlFor="password" className="password">
               Password:
             </label>

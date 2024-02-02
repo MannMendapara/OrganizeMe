@@ -29,29 +29,29 @@ function App() {
           console.error('Token validation error:', error);
         });
     }
-  },[])
+  }, [])
 
   return (
     <>
-      {
-        isLoggedIn ? (<BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path='/user' element={<Home />} />
-            <Route path='/user/running' element={<Running_Tasks />} />
-            <Route path='/user/completed' element={<Completed_Task />} />
-            <Route path='/user/add-task' element={<Create_Task />} />
-            <Route path='/user/all-task' element={<All_Task />} />
-          </Routes>
-        </BrowserRouter>) : (
-          <BrowserRouter>
+      <BrowserRouter>
+        {
+          isLoggedIn ? (
+            <>
+              <Navbar />
+              <Routes>
+                <Route path='/user/' element={<Home />} />
+                <Route path='/user/running' element={<Running_Tasks />} />
+                <Route path='/user/completed' element={<Completed_Task />} />
+                <Route path='/user/add-task' element={<Create_Task />} />
+                <Route path='/user/all-task' element={<All_Task />} />
+              </Routes></>) : (
             <Routes>
               <Route path='/' element={<Login />} />
-              <Route path='/reg' element={<Register />} /> 
+              <Route path='/reg' element={<Register />} />
             </Routes>
-          </BrowserRouter>
-        )
-      }
+          )
+        }
+      </BrowserRouter>
     </>
   );
 }
