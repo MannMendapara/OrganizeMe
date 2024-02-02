@@ -38,7 +38,7 @@ const Login = () => {
         const { token } = response.data;
         localStorage.setItem('token', token);
         axios.defaults.headers.common['Authorization'] = token
-        window.location.href = '/user'
+        window.location.href = '/user';
       }
     } catch (error) {
       // Handle errors
