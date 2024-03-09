@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 const Register = () => {
-
-  const navigate = useNavigate();
 
   const [name, setname] = useState();
   const [email, setemail] = useState();
@@ -20,7 +17,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post('http://localhost:3000/reg', {
+      await axios.post('https://advance-toodoo.onrender.com/reg', {
         name,
         email,
         password,
@@ -28,7 +25,7 @@ const Register = () => {
         const { token } = response.data;
         // Store the token in localStorage or sessionStorage
         localStorage.setItem('token', token);
-        navigate('/auth/login');
+        window.location.href = '/'
       }).catch(e => {
         console.error(e);
       })
@@ -60,7 +57,7 @@ const Register = () => {
       <div className="">
         <p className="text-pera">
           Already Have  An Acoount{" "}
-          <Link className="link" to="/login">
+          <Link className="link" to="/">
             Login
           </Link>{" "}
           Here

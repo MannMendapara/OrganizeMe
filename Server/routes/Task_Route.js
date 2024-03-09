@@ -173,7 +173,7 @@ Task_router.put("/status/:id", auth, async (req, res) => {
 Task_router.get("/profile/:id",auth,async(req,res)=>{
   const { id } = req.params;
   try {
-    const data = await Task.findById(id);
+    const data = await User.findById(id);
     if (!data) {
       return res.status(404).json({ error: "Task not found" });
     }

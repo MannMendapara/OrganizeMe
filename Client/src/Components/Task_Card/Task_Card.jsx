@@ -22,7 +22,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
 
   // Function for delete task
   const handleDelete = async () => {
-    const res = await axios.delete(`http://localhost:3000/user/delete/${id}`);
+    const res = await axios.delete(`https://advance-toodoo.onrender.com/user/delete/${id}`);
     if (!res) {
       console.error("Error");
     }
@@ -42,7 +42,7 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
   useEffect(() => {
     const updateStatus = async () => {
       try {
-        const response = await axios.put(`http://localhost:3000/user/status/${id}`);
+        const response = await axios.put(`https://advance-toodoo.onrender.com/user/status/${id}`);
         if (!response) {
           console.error("Error");
         }
@@ -62,8 +62,8 @@ const Task_Card = ({ id, Status, Start, End, Title }) => {
         <div className="card">
           <div className="data">
             <div className="des">{Title}</div>
-            <div className="start-date des">{Start}</div>
-            {End && <div className="end-date des">{End}</div>}
+            <div className="start-date des"><span>StartDate:</span> {Start}</div>
+            {End && <div className="end-date des"><span>EndDate:</span> {End}</div>}
             {Status === "Completed" ? (
               <div className="completed">Completed</div>
             ) : (

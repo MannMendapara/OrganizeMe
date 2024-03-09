@@ -8,14 +8,16 @@ const Running_Tasks = () => {
   const [panding, setPanding] = useState([]);
   const [allTask, setAllTask] = useState([]);
   const [inputVal, setInputVal] = useState("");
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/user/running")
+      .get("https://advance-toodoo.onrender.com/user/running")
       .then((response) => {
-        setAllTask(response.data)
+        setAllTask(response.data);
         const completedTasks = allTask.filter((task) => task.Status !== "Completed");
         setPanding(completedTasks);
+        setloading(false);
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
@@ -31,57 +33,60 @@ const Running_Tasks = () => {
   const searchedTasks = searchTasks();
 
   return (
-    <div className="running-cnt">
-      <div className="top-cont">
-        <div className="top-title">
-          <p>Running Task</p>
-        </div>
-      </div>
-      <div className="top-bar">
-        <div className="sort-task">
-          <div className="priority">
-            <select type="text" name="Priority" className="sorting">
-              <option value="default" disabled selected>
-                By Priority
-              </option>
-              <option value="Very Important">Very Important</option>
-              <option value="Important">Important</option>
-              <option value="Less Important">Less Important</option>
-              <option value="Daily Task">Daily Task</option>
-              <option value="Weekly Task">Weekly Task</option>
-              <option value="Monthly Task">Monthly Task</option>
-            </select>
+    <> { loading ? (<h2 className='home-cnt'>Loading...</h2>) :
+      (<div className="running-cnt">
+        <div className="top-cont">
+          <div className="top-title">
+            <p>Running Task</p>
           </div>
+        </div>
+        <div className="top-bar">
+          <div className="sort-task">
+            <div className="priority">
+              <select type="text" name="Priority" className="sorting">
+                <option value="default" disabled selected>
+                  By Priority
+                </option>
+                <option value="Very Important">Very Important</option>
+                <option value="Important">Important</option>
+                <option value="Less Important">Less Important</option>
+                <option value="Daily Task">Daily Task</option>
+                <option value="Weekly Task">Weekly Task</option>
+                <option value="Monthly Task">Monthly Task</option>
+              </select>
+            </div>
 
-        </div>
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Search"
-            onChange={(e) => setInputVal(e.target.value)}
-          />
-          <img src="/Images/Search.png" alt="Icon" />
-        </div>
-      </div>
-      <div className="serched-task-data">
-        {inputVal ? <div className="search-task"><Searched_Tasks data={searchedTasks} /></div> : ""}
-      </div>
-      <div className="datacard-cnt">
-        {!inputVal && panding.map((item, i) => {
-          const startDate = new Date(item.StartDate);
-          // Format the dates as "dd/mm/yyyy"
-          const formattedStartDate = startDate.toLocaleDateString("en-GB");
-          return (
-            <Task_Card
-              key={i}
-              Start={formattedStartDate}
-              Title={item.Title}
-              id={item._id}
+          </div>
+          <div className="search">
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={(e) => setInputVal(e.target.value)}
             />
-          );
-        })}
-      </div>
-    </div>
+            <img src="/Images/Search.png" alt="Icon" />
+          </div>
+        </div>
+        <div className="serched-task-data">
+          {inputVal ? <div className="search-task"><Searched_Tasks data={searchedTasks} /></div> : ""}
+        </div>
+        <div className="datacard-cnt">
+          {!inputVal && panding.map((item, i) => {
+            const startDate = new Date(item.StartDate);
+            // Format the dates as "dd/mm/yyyy"
+            const formattedStartDate = startDate.toLocaleDateString("en-GB");
+            return (
+              <Task_Card
+                key={i}
+                Start={formattedStartDate}
+                Title={item.Title}
+                id={item._id}
+              />
+            );
+          })}
+        </div>
+      </div>)
+    }
+    </>
   );
 };
 

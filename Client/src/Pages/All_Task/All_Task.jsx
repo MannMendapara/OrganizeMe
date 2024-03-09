@@ -13,7 +13,7 @@ const All_Task = () => {
   // useEffect
   useEffect(() => {
     axios
-      .get("http://localhost:3000/user")
+      .get("https://advance-toodoo.onrender.com/user")
       .then((response) => {
         // Set the tasks initially
         setTasks(response.data);
@@ -87,7 +87,7 @@ const All_Task = () => {
         </div>
         <div className="all-search">
           <input type="text" placeholder="Search" onChange={(e) => setInputval(e.target.value)} />
-          <img src="./Images/Search.png" alt="Icon" />
+          <img src="/Images/Search.png" alt="Icon" />
         </div>
       </div>
       {

@@ -2,46 +2,44 @@ import { useState, useEffect } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
+    Getuserlogin();
+  }, []);
+
+  const Getuserlogin = async () => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
       // Set the token in Axios default headers
       axios.defaults.headers.common['Authorization'] = storedToken;
-
       // Optionally, you can make an initial request to validate the token
       // and get the user details if needed.
       // Example:
-      axios.get('http://localhost:3000/auth/login')
-        .then(response => {
-          if (response) {
-            navigate('/user')
-          }
-        })
-        .catch(error => {
-          console.error('Token validation error:', error);
-        });
+      const response = await axios.get('https://advance-toodoo.onrender.com/auth/login');
+      if (response) {
+        window.location.href = '/user'
+      }
     }
-  }, []);
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
+      const response = await axios.post('https://advance-toodoo.onrender.com/auth/login', {
         email,
         password,
       });
-      const { token } = response.data;
-      localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = token;
-      navigate('/user/');
+      if (response) {
+        const { token } = response.data;
+        localStorage.setItem('token', token);
+        axios.defaults.headers.common['Authorization'] = token
+        window.location.href = '/user';
+      }
     } catch (error) {
       // Handle errors
       console.error('Login error:', error);
@@ -59,7 +57,7 @@ const Login = () => {
             </label>
             <input type="email" placeholder="Enter Your Email" id="email" className="input" onChange={e => setemail(e.target.value)} />
           </div>
-          <div className="password-cnt">
+          <div className="password-cnt">  
             <label htmlFor="password" className="password">
               Password:
             </label>
@@ -77,7 +75,7 @@ const Login = () => {
         </form>
         <div className="">
           <p className="text-pera">
-            Don't Have An Acoount{" "}
+            Do not have An Account{" "}
             <Link className="link" to="/reg">
               Register
             </Link>{" "}

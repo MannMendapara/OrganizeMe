@@ -7,7 +7,7 @@ import config from 'config'
     return res.status(401).json({ msg: 'No Token, Authorization Denied' });
   }
   try {
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    const decoded = jwt.verify(token, process.env.jwtSecret);
     req.user = decoded.user;
     next();
   } catch (err) {

@@ -7,7 +7,7 @@ const Information_Task = ({ taskId, CloseInformation }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/user/${taskId}`)
+      .get(`https://advance-toodoo.onrender.com/user/${taskId}`)
       .then((response) => {
         setData(response.data);
       })
@@ -22,12 +22,13 @@ const Information_Task = ({ taskId, CloseInformation }) => {
   const endDate = new Date(data.EndDate);
   const formattedEndDate = endDate.toLocaleDateString();
   return (
-   
+
     <>
       <div className="info-cnt">
         <div className="info-cont">
+            <div className="info-task-title">Task Details</div> 
           <div className="info-data-wrapper">
-          <img src="./Images/Cross.png" alt="" className="close-icon" onClick={CloseInformation} />
+            <img src="./Images/Cross.png" alt="" className="close-icon" onClick={CloseInformation} />
             <div className="classnameinfo-data">
               <lable>Task Title : </lable>
               <span>{data.Title}</span>
