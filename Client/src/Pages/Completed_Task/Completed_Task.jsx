@@ -5,16 +5,15 @@ import Searched_Tasks from "../Searched_Task/Searched_Tasks";
 import axios from "axios";
 
 const Completed_Task = () => {
-  const [allTask, setAlltask] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [inputVal, setInputVal] = useState("");
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
     axios
-      .get("https://advance-toodoo.onrender.com/user/completed")
+      .get("http://localhost:3000/user/completed")
       .then((response) => {
-        setAlltask(response.data)
+        const allTask = response.data;
         const completedTasks = allTask.filter((task) => task.Status === "Completed");
         setCompleted(completedTasks);
         setloading(false);
@@ -22,7 +21,7 @@ const Completed_Task = () => {
       .catch((error) => {
         console.error("Error fetching tasks:", error);
       });
-  }, [allTask]);
+  }, []);
 
   const searchTasks = () => {
     return completed.filter((task) =>

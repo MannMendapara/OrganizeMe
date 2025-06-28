@@ -1,11 +1,10 @@
-import express from "express"
-import dotenv from "dotenv"
-import cors from 'cors'
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
 import mongoose from "mongoose";
 import Task_router from "./routes/Task_Route.js";
-import User_Router from './routes/user.js'
+import User_Router from "./routes/user.js";
 import Auth_Router from "./routes/Auth.js";
-import auth from "./Middleware/auth.js";
 
 const app = express();
 dotenv.config();
@@ -13,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 // MongoURL and connection
 const escapedPassword = encodeURIComponent(process.env.MONGO_PASS);
-const DB = `mongodb+srv://mannmendapara13:${escapedPassword}@cluster0.qlgh43q.mongodb.net/?retryWrites=true&w=majority`;
+const DB = `mongodb+srv://Admin-Mann:${escapedPassword}@cluster0.borwt70.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 mongoose
   .connect(DB)
   .then(() => {
@@ -27,9 +26,9 @@ mongoose
 app.use(express.json());
 app.use(cors());
 
-app.use('/', User_Router);
-app.use('/auth', Auth_Router);
-app.use('/user', Task_router);
+app.use("/", User_Router);
+app.use("/auth", Auth_Router);
+app.use("/user", Task_router);
 
 // Server
 app.listen(PORT, () => {

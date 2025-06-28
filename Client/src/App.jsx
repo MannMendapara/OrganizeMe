@@ -19,7 +19,7 @@ function App() {
     if (storedToken) {
       axios.defaults.headers.common['Authorization'] = storedToken;
       axios
-        .get('https://advance-toodoo.onrender.com/auth/login')
+        .get('http://localhost:3000/auth/login')
         .then((response) => {
           if (response) {
             setIsLoggedIn(true);

@@ -9,7 +9,6 @@ const Home = () => {
 
   const [completed, setCompleted] = useState([]);
   const [panding, setPanding] = useState([]);
-  const [allTask, setAllTask] = useState([]);
   const [loading, setloading] = useState(true);
   const Navigate = useNavigate();
 
@@ -26,7 +25,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    axios.get('https://advance-toodoo.onrender.com/user/')
+    axios.get('http://localhost:3000/user/')
       .then(response => {
         // Assuming response.data is an array of tasks
         const tasks = response.data;
@@ -37,13 +36,12 @@ const Home = () => {
 
         setCompleted(completedTasks);
         setPanding(pendingTasks);
-        setAllTask(tasks); // Set all tasks once after filtering completed and pending tasks
         setloading(false);
       })
       .catch(error => {
         console.error('Error fetching tasks:', error);
       });
-  }, [allTask]);
+  }, []);
 
 
   return (
@@ -59,8 +57,6 @@ const Home = () => {
               {
                 panding.map((item, i) => {
                   const startDate = new Date(item.StartDate);
-
-                  // Format the dates as "dd/mm/yyyy"
                   const formattedStartDate = startDate.toLocaleDateString('en-GB');
                   return (
                     <Task_Card key={i} Start={formattedStartDate} Title={item.Title} id={item._id} />

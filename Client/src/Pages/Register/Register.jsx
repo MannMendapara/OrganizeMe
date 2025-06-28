@@ -17,7 +17,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post('https://advance-toodoo.onrender.com/reg', {
+      await axios.post('http://localhost:3000/reg', {
         name,
         email,
         password,
